@@ -1,0 +1,1 @@
+# MCM-2025-Problem-E-Meritorious-Winner
