@@ -18,7 +18,7 @@ Alternatively use `npx serve .` from repository root.
 
 ## What works now
 - Responsive research landing page, original paper and figure links.
-- Sustainable agriculture research story and evidence/classification notices.
+- Seven research chapters with original figures, Paper and Interpretation views, decision trails and a team-lead retrospective. See the [storyboard](../docs/RESEARCH_STORYBOARD.md).
 - Synthetic three-species stochastic dynamical experiment with interactive growth, interaction, noise and random seed.
 - Seeded random generator for repeatable outputs, an accessible SVG time-series plot and text-only final state readings.
 - Paper and documentation access; no API keys required.
