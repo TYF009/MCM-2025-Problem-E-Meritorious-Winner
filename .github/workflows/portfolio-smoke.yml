@@ -1,0 +1,24 @@
+name: Portfolio Prototype Smoke Tests
+
+on:
+  push:
+    paths:
+      - 'site/**'
+      - 'tests/**'
+      - '.github/workflows/portfolio-smoke.yml'
+  pull_request:
+    paths:
+      - 'site/**'
+      - 'tests/**'
+      - '.github/workflows/portfolio-smoke.yml'
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Smoke test (no third-party dependencies)
+        run: node --test tests/site-smoke.test.mjs
