@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'; connect-src 'self'">
+  <title>Research Companion | The Verdant Metamorphosis</title>
+  <link rel="stylesheet" href="companion.css">
+<link rel="stylesheet" href="../portfolio.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to Research Companion</a>
+  <header class="portfolio-header">
+  <div class="portfolio-shell">
+    <a class="portfolio-brand" href="../">The Verdant Metamorphosis</a>
+    <nav aria-label="Portfolio"><a href="../#research">Research Story</a><a href="../#figures">Figure Atlas</a><a href="../#lab">Ecological Dynamics Lab</a><a href="../decision/">Decision Studio</a><a aria-current="page" href="../companion/">Research Companion</a><a href="../#evidence">Original Evidence</a><a href="../#team-lead">Team Lead</a></nav>
+  </div>
+</header>
+  <main tabindex="-1" id="main">
+    <section class="hero"><div class="shell">
+      <span class="tag">2026 AI-assisted development</span>
+      <h1>Research Companion</h1>
+      <p>Find what the 2025 paper reports, review an experiment draft, and test how model outcomes change under explicit assumptions.</p>
+      <nav class="refs" aria-label="Companion sections"><a href="#ask">Ask the Research</a><a href="#draft">Scenario Draft</a><a href="#challenges">Model Challenges</a><a href="#library">Source Library</a></nav>
+    </div></section>
+    <div class="shell content">
+      <section id="ask" aria-labelledby="ask-title">
+        <span class="tag">Source Explorer (offline)</span>
+        <h2 id="ask-title">Ask the Research</h2>
+        <p>Local keyword retrieval returns curated notes from the original 2025 paper and prompt. It can flag missing or unreproduced evidence.</p>
+        <form id="ask-form" class="panel" hidden>
+          <label for="question">Question about the paper</label>
+          <div class="actions"><input id="question" required maxlength="320" placeholder="What does the paper say about bats and bees?"><button>Find evidence</button></div>
+          <div class="examples" id="question-examples" aria-label="Example questions"></div>
+        </form>
+        <p id="ask-status" role="status"></p>
+        <div id="answers" class="grid" aria-label="Retrieved evidence"></div>
+      </section>
+
+      <section id="draft" aria-labelledby="draft-title">
+        <span class="tag">Offline command grammar</span>
+        <h2 id="draft-title">Scenario Draft Builder</h2>
+        <p>Use one of the supported patterns. Review the exact synthetic controls before approving the existing numerical engine to run.</p>
+        <div id="draft-ui" hidden>
+          <form class="panel" id="draft-form">
+            <label for="command">Scenario command</label>
+            <div class="actions"><input id="command" maxlength="240" required placeholder="Change the producer growth rate to 0.8"><button>Draft parameters</button></div>
+            <div id="command-examples" class="examples" aria-label="Supported command patterns"></div>
+          </form>
+          <p id="draft-status" role="status"></p>
+          <p id="draft-error" class="error" role="alert" hidden></p>
+          <div class="panel" id="draft-review" hidden>
+            <h3>Review proposed parameters</h3>
+            <div id="parameter-preview"></div>
+            <div class="actions review-actions">
+              <button id="validate" type="button">Validate draft</button>
+              <button id="approve" type="button">Approve reviewed parameters</button>
+              <button id="run-draft" type="button">Run approved experiment</button>
+              <button id="reject" class="secondary" type="button">Reject draft</button>
+            </div>
+          </div>
+          <div id="draft-results" class="panel" hidden></div>
+        </div>
+      </section>
+
+      <section id="challenges" aria-labelledby="challenges-title">
+        <span class="tag synthetic">Post-contest numerical experiments</span>
+        <h2 id="challenges-title">Model Challenge Lab</h2>
+        <p>Review the fixed settings and proposed change, then run each challenge independently.</p>
+        <div id="challenge-list" class="challenge-list"></div>
+      </section>
+
+      <section id="library" aria-labelledby="library-title">
+        <span class="tag original">2025 Contest Research</span>
+        <h2 id="library-title">Source Library</h2>
+        <p>Curated paraphrases of published content. Reported results and audit notes carry their own labels.</p>
+        <p class="refs"><a href="../../paper/2521959.pdf">Original paper PDF</a><a href="../../problem/2025_ICM_Problem_E.pdf">Official prompt PDF</a><a href="../../docs/FIGURE_ATLAS.md">Figure Atlas</a></p>
+        <details class="panel" id="library-index">
+          <summary>Read all 18 evidence notes</summary>
+          <div class="grid">
+          <article class="note" data-evidence="brief">
+            <h3>Official forest-to-farm task</h3><p class="meta">Source scope · Problem E</p>
+            <p>The prompt asks for a food web tracking forest conversion, returning species, chemical management and an organic-farming decision letter.</p><p class="caveat">The prompt’s herbicide-only question differs from the paper’s broader pesticide-withdrawal treatment.</p>
+            <p class="refs"><a href="../../problem/2025_ICM_Problem_E.pdf#page=1">Prompt, PDF p. 1</a> <a href="../../problem/2025_ICM_Problem_E.pdf#page=2">Prompt, PDF p. 2</a></p>
+          </article>
+          <article class="note" data-evidence="conversion">
+            <h3>From forest to farm</h3><p class="meta">2025 Contest Research · §§ 1.1–1.2</p>
+            <p>The paper frames conversion as a disturbance that changes habitat and relationships sustaining agricultural production.</p><p class="caveat">Fig. 1 is a contextual illustration.</p>
+            <p class="refs"><a href="../../paper/2521959.pdf#page=3">Paper, PDF p. 3</a></p>
+          </article>
+          <article class="note" data-evidence="food-web">
+            <h3>The food web</h3><p class="meta">2025 Contest Research · § 4.1</p>
+            <p>The paper links producers, consumer levels and decomposers through energy and nutrient flows.</p><p class="caveat">The conceptual diagram supplies no calibrated interaction coefficients.</p>
+            <p class="refs"><a href="../../paper/2521959.pdf#page=6">Paper, PDF p. 6</a></p>
+          </article>
+          <article class="note" data-evidence="aed">
+            <h3>Ecological dynamics model</h3><p class="meta">2025 Contest Research · §§ 5.1–5.2</p>
+            <p>Eq. 7 includes age transport, population interactions, stochastic forcing and delay. Fig. 5 summarizes the AED framework.</p><p class="caveat">Age grids, histories and sufficient fitted inputs are missing. The portfolio’s teaching model is separate.</p>
+            <p class="refs"><a href="../../paper/2521959.pdf#page=8">Paper, PDF p. 8</a> <a href="../../paper/2521959.pdf#page=11">Paper, PDF p. 11</a></p>
+          </article>
+          <article class="note" data-evidence="seasonality">
+            <h3>Seasonality and FPI</h3><p class="meta">Reported 2025 results · §§ 5.3.1–5.3.2</p>
+            <p>The paper reports a decline in producer and consumer species counts followed by partial recovery. Fig. 7 charts a separate ordinal energy index across farm stages.</p><p class="caveat">The input series and physical energy units are unavailable. The results have not been independently reproduced.</p>
+            <p class="refs"><a href="../../paper/2521959.pdf#page=12">Paper, PDF p. 12</a> <a href="../../paper/2521959.pdf#page=13">Paper, PDF p. 13</a></p>
+          </article>
+          <article class="note" data-evidence="return">
+            <h3>Returning native species</h3><p class="meta">Reported 2025 results · § 5.4</p>
+            <p>The study models dandelions and snails joining the existing system. Fig. 8 plots the paper’s modeled density trajectories.</p><p class="caveat">Numerical initial states and usable histories are missing. The trajectories have not been independently reproduced.</p>
+            <p class="refs"><a href="../../paper/2521959.pdf#page=14">Paper, PDF p. 14</a></p>
+          </article>
+          <article class="note" data-evidence="withdrawal">
+            <h3>Pesticide withdrawal</h3><p class="meta">Reported 2025 results · § 5.5.1</p>
+            <p>Eq. 10 combines growth, interaction, a reference-state term and exposure-dependent loss. The paper discusses broad pesticide removal. The prompt asks about herbicide removal.</p><p class="caveat">The archive lacks a dose schedule and a distinct herbicide-only comparison. The scenario has not been independently reproduced.</p>
+            <p class="refs"><a href="../../paper/2521959.pdf#page=15">Paper, PDF p. 15</a> <a href="../../problem/2025_ICM_Problem_E.pdf#page=2">Prompt, PDF p. 2</a></p>
+          </article>
+          <article class="note" data-evidence="bat-bee">
+            <h3>Bats and bees</h3><p class="meta">Reported 2025 results · Summary and § 5.5.2</p>
+            <p>The paper compares separate bat and bee scenarios. Its summary reports reductions in disturbance sensitivity of 11% and 35%, respectively.</p><p class="caveat">These are reported model claims. The archive lacks species-specific calibration, independently reproduced trajectories and field validation.</p>
+            <p class="refs"><a href="../../paper/2521959.pdf#page=1">Paper, PDF p. 1</a> <a href="../../paper/2521959.pdf#page=15">Paper, PDF p. 15</a> <a href="../../paper/2521959.pdf#page=16">Paper, PDF p. 16</a></p>
+          </article>
+          <article class="note" data-evidence="indicators">
+            <h3>Organic farm indicators</h3><p class="meta">2025 Contest Research · § 6.1.1</p>
+            <p>The 5D-OFE framework uses environmental conditions, ecological metrics, crop parameters, policy economics and soil fertility.</p><p class="caveat">The archive lacks the complete input matrix.</p>
+            <p class="refs"><a href="../../paper/2521959.pdf#page=16">Paper, PDF p. 16</a> <a href="../../paper/2521959.pdf#page=17">Paper, PDF p. 17</a></p>
+          </article>
+          <article class="note" data-evidence="weights">
+            <h3>Reported weighting methods</h3><p class="meta">2025 Contest Research · §§ 6.1.2–6.1.3</p>
+            <p>The paper presents AHP, entropy weighting, CRITIC and a combined weighting figure.</p><p class="caveat">Judgment and input matrices and a reproducible final fusion rule are missing.</p>
+            <p class="refs"><a href="../../paper/2521959.pdf#page=19">Paper, PDF p. 19</a> <a href="../../paper/2521959.pdf#page=20">Paper, PDF p. 20</a></p>
+          </article>
+          <article class="note" data-evidence="optimization">
+            <h3>Milkwood objectives and ranking</h3><p class="meta">Reported 2025 results · §§ 6.1.4, 6.2.1</p>
+            <p>The paper describes environmental and economic objectives and reports applying NSGA-II and TOPSIS to the Milkwood case.</p><p class="caveat">Candidates, full variable mappings and ranking settings are unavailable. The result has not been independently reproduced.</p>
+            <p class="refs"><a href="../../paper/2521959.pdf#page=21">Paper, PDF p. 21</a> <a href="../../paper/2521959.pdf#page=22">Paper, PDF p. 22</a></p>
+          </article>
+          <article class="note" data-evidence="forecast">
+            <h3>Published forecast</h3><p class="meta">Reported 2025 results · §§ 6.1.4, 6.2.2</p>
+            <p>The paper names ARIMA(2,1,2) and plots a 15-year scenario with sustainability and monetary series.</p><p class="caveat">Training data, fitted coefficients and independent forecast checks are missing. The chart has not been independently reproduced and does not establish actual revenue.</p>
+            <p class="refs"><a href="../../paper/2521959.pdf#page=21">Paper, PDF p. 21</a> <a href="../../paper/2521959.pdf#page=23">Paper, PDF p. 23</a></p>
+          </article>
+          <article class="note" data-evidence="sensitivity">
+            <h3>Reported sensitivity study</h3><p class="meta">Reported 2025 results · § 7</p>
+            <p>The paper varies linear and nonlinear factors by 10% and plots sensitivity index distributions.</p><p class="caveat">Baselines, the sensitivity metric and individual runs are unavailable. The result does not establish global stability.</p>
+            <p class="refs"><a href="../../paper/2521959.pdf#page=23">Paper, PDF p. 23</a> <a href="../../paper/2521959.pdf#page=24">Paper, PDF p. 24</a></p>
+          </article>
+          <article class="note" data-evidence="letter">
+            <h3>Farmer recommendations</h3><p class="meta">Reported 2025 recommendations · Farmer letter</p>
+            <p>The letter proposes restoration areas and nitrogen-fixing plants, soil monitoring, nets and habitat for natural pest enemies, and tourism or education as prospective revenue sources.</p><p class="caveat">Radar inputs and baselines are unavailable. Proposals and projected timelines do not establish observed outcomes or certification.</p>
+            <p class="refs"><a href="../../paper/2521959.pdf#page=25">Paper, PDF p. 25</a></p>
+          </article>
+          <article class="note" data-evidence="eq9">
+            <h3>Equation 9 state-symbol mismatch</h3><p class="meta">Audited source anomaly · § 5.4</p>
+            <p>Eq. 8 names the fourth state Q. Eq. 9 writes W in the initial conditions.</p><p class="caveat">The source does not resolve the mismatch or supply numeric initial conditions.</p>
+            <p class="refs"><a href="../../paper/2521959.pdf#page=14">Paper, PDF p. 14</a></p>
+          </article>
+          <article class="note" data-evidence="eq17">
+            <h3>Equation 17 cost expression</h3><p class="meta">Audited source anomaly · § 6.1.1</p>
+            <p>The printed cost expression satisfies the initial value but generally fails the cost differential equation in Eq. 16.</p><p class="caveat">The portal documents the discrepancy and leaves the printed equation intact.</p>
+            <p class="refs"><a href="../../paper/2521959.pdf#page=18">Paper, PDF p. 18</a></p>
+          </article>
+          <article class="note" data-evidence="eq27">
+            <h3>Equation 27 malformed coefficient</h3><p class="meta">Audited source anomaly · § 6.2.1</p>
+            <p>Eq. 27 prints a malformed coefficient for the environmental objective.</p><p class="caveat">Its intended value is not established in the source archive.</p>
+            <p class="refs"><a href="../../paper/2521959.pdf#page=21">Paper, PDF p. 21</a></p>
+          </article>
+          <article class="note" data-evidence="archive">
+            <h3>Data and validation limits</h3><p class="meta">Audited source gap · §§ 4.2, 8</p>
+            <p>The paper lists external data portals and discusses limitations. The audit found no complete raw observations, calibrated inputs or archived forecast training data.</p><p class="caveat">Reported model outcomes remain separate from field validation and independent reproduction.</p>
+            <p class="refs"><a href="../../paper/2521959.pdf#page=7">Paper, PDF p. 7</a> <a href="../../paper/2521959.pdf#page=24">Paper, PDF p. 24</a></p>
+          </article>
+          </div>
+        </details>
+      </section>
+
+      <section id="runtime">
+        <h2>Runtime and provenance</h2>
+        <p>Codex assisted with development of this 2026 extension. The deployed page uses deterministic retrieval, a narrow command grammar and the existing browser solvers. No language model runs on this page. Optional AI Mode is an integration design for later security review.</p>
+        <p>Questions and commands stay in this page. A scenario download includes the original command, so omit sensitive information. The 2025 paper supplies the cited research record. The illustrative engines use synthetic inputs.</p>
+        <p class="refs"><a href="../../docs/AI_RESEARCH_ASSISTANT_SPEC.md">Architecture and threat model</a><a href="../../docs/AI_EVALUATION.md">Evaluation and limitations</a></p>
+      </section>
+    </div>
+  </main>
+  <script type="module" src="companion.mjs"></script>
+</body>
+</html>

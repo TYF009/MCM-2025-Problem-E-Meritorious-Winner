@@ -1,0 +1,234 @@
+{
+  "version": "1.0.0",
+  "sampleInterval": 0.2,
+  "populationUnit": "synthetic population index",
+  "timeUnit": "synthetic simulation time unit",
+  "controls": {
+    "growth": {
+      "label": "Producer net growth",
+      "minimum": 0.2,
+      "maximum": 1.2,
+      "step": 0.01,
+      "unit": "per synthetic time unit",
+      "effect": "Sets the intrinsic rate r₁ before interactions."
+    },
+    "interaction": {
+      "label": "Interaction strength",
+      "minimum": 0,
+      "maximum": 0.18,
+      "step": 0.01,
+      "unit": "per population index per synthetic time unit (independent); dimensionless (Eq. 10)",
+      "effect": "Sets |A₁₂| in the independent model or a₁₂ in the Eq. 10 example."
+    },
+    "initial": {
+      "label": "Initial producer population",
+      "minimum": 1,
+      "maximum": 25,
+      "step": 0.1,
+      "unit": "synthetic population index",
+      "effect": "Changes the initial value of the first state."
+    },
+    "dt": {
+      "label": "Integration step",
+      "choices": [
+        0.0125,
+        0.025,
+        0.05,
+        0.1
+      ],
+      "unit": "synthetic time units",
+      "effect": "Both models output every 0.2 synthetic time units."
+    },
+    "horizon": {
+      "label": "Simulation horizon",
+      "minimum": 10,
+      "maximum": 60,
+      "step": 1,
+      "integer": true,
+      "unit": "synthetic time units",
+      "effect": "Sets the final time without changing the step."
+    },
+    "noise": {
+      "label": "Multiplicative noise amplitude",
+      "minimum": 0,
+      "maximum": 0.16,
+      "step": 0.01,
+      "unit": "per square root of synthetic time",
+      "effect": "At zero, the independent model follows the deterministic Euler update."
+    },
+    "seed": {
+      "label": "Random seed",
+      "minimum": 0,
+      "maximum": 4294967295,
+      "step": 1,
+      "integer": true,
+      "unit": "unsigned 32-bit integer",
+      "effect": "Initializes the random stream for a repeatable path."
+    },
+    "exposure": {
+      "label": "Exposure before withdrawal",
+      "minimum": 0,
+      "maximum": 1,
+      "step": 0.01,
+      "unit": "synthetic exposure index",
+      "effect": "Scales the exposure-dependent loss until the switch."
+    },
+    "withdrawal": {
+      "label": "Withdrawal time",
+      "minimum": 0,
+      "maximum": 60,
+      "step": 1,
+      "integer": true,
+      "unit": "synthetic time units",
+      "effect": "Exposure becomes zero at this time. Choose a time within the simulation horizon."
+    }
+  },
+  "scenarios": {
+    "independent": {
+      "name": "Three-population dynamics",
+      "classification": "Independent illustrative numerical model",
+      "equation": "dXᵢ = Xᵢ(rᵢ + Σⱼ Aᵢⱼ Xⱼ)dt + σ Xᵢ dWᵢ",
+      "citation": "../../paper/2521959.pdf#page=11",
+      "citationRole": "Eq. 7, p. 11 provides mathematical context only",
+      "species": [
+        "Producers",
+        "Pests",
+        "Beneficial population"
+      ],
+      "controlOrder": [
+        "growth",
+        "interaction",
+        "noise",
+        "initial",
+        "dt",
+        "horizon",
+        "seed"
+      ],
+      "defaults": {
+        "growth": 0.8,
+        "interaction": 0.1,
+        "noise": 0.03,
+        "initial": 10,
+        "dt": 0.025,
+        "horizon": 40,
+        "seed": 2025
+      },
+      "constants": {
+        "growthTail": [
+          -0.3,
+          -0.15
+        ],
+        "matrix": [
+          [
+            -0.05,
+            -0.1,
+            0
+          ],
+          [
+            0.08,
+            -0.02,
+            -0.12
+          ],
+          [
+            0,
+            0.06,
+            -0.01
+          ]
+        ],
+        "initialTail": [
+          2,
+          0.5
+        ],
+        "projection": [
+          0,
+          80
+        ]
+      },
+      "rationale": "Retains PR #9 teaching defaults and [0, 80] projection. The signs provide competition, pest pressure and a beneficial population response.",
+      "limits": "Coefficients and time are synthetic. No age, delay, impulses or spatial mechanisms. Projection changes the numerical process when crossed.",
+      "solver": "Explicit Euler–Maruyama with independent normal increments; explicit Euler when σ = 0",
+      "coefficientUnits": {
+        "rates": "per synthetic time unit",
+        "matrix": "per population index per synthetic time unit",
+        "initial": "synthetic population index",
+        "projection": "synthetic population index"
+      }
+    },
+    "withdrawal": {
+      "name": "Exposure withdrawal (Eq. 10 form)",
+      "classification": "Structural reconstruction with illustrative parameters",
+      "equation": "dSᵢ/dt = rᵢSᵢ(1 − Σⱼ aᵢⱼSⱼ/Kᵢ) + mᵢ(Sᵢᵉᑫ − Sᵢ) − εᵢSᵢC(t)",
+      "citation": "../../paper/2521959.pdf#page=15",
+      "citationRole": "Original equation form, Eq. 10, p. 15",
+      "species": [
+        "Producers",
+        "Consumers"
+      ],
+      "controlOrder": [
+        "growth",
+        "interaction",
+        "initial",
+        "exposure",
+        "withdrawal",
+        "dt",
+        "horizon"
+      ],
+      "defaults": {
+        "growth": 0.6,
+        "interaction": 0.1,
+        "initial": 10,
+        "exposure": 0.5,
+        "withdrawal": 12,
+        "dt": 0.025,
+        "horizon": 40
+      },
+      "constants": {
+        "growthTail": [
+          0.45
+        ],
+        "matrix": [
+          [
+            1,
+            0.1
+          ],
+          [
+            0.2,
+            1
+          ]
+        ],
+        "capacity": [
+          18,
+          12
+        ],
+        "relaxation": [
+          0.12,
+          0.15
+        ],
+        "reference": [
+          10,
+          5
+        ],
+        "loss": [
+          0.65,
+          0.45
+        ],
+        "initialTail": [
+          5
+        ]
+      },
+      "rationale": "Author-chosen positive rates, capacities and reference states give two interacting populations. Withdrawal is an illustrative step from the chosen exposure to zero.",
+      "limits": "No recovered case parameters, measured dose or species-specific calibration. The loss coefficient follows its algebraic role in Eq. 10. The paper's scenario concerns broad pesticide withdrawal.",
+      "solver": "Explicit Euler, deterministic; seed not used",
+      "seed": null,
+      "coefficientUnits": {
+        "rates": "per synthetic time unit",
+        "matrix": "dimensionless",
+        "initial": "synthetic population index",
+        "capacity": "synthetic population index",
+        "reference": "synthetic population index",
+        "relaxation": "per synthetic time unit",
+        "loss": "per synthetic exposure index per synthetic time unit"
+      }
+    }
+  }
+}

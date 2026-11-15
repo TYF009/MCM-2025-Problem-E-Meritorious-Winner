@@ -1,0 +1,98 @@
+name: Portfolio verification
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: verify-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  scientific-integrity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm ci --ignore-scripts
+      - run: npm audit --audit-level=moderate
+      - run: python -m pip install -r tools/requirements-release.txt
+      - name: Verify original PDF structure
+        run: |
+          mkdir -p release-reports
+          python tools/verify-paper.py | tee release-reports/pdf.txt
+        shell: bash
+      - name: Numerical, preservation and source tests
+        run: node --test | tee release-reports/node-tests.txt
+        shell: bash
+      - name: Build and verify project-prefixed artifact
+        run: |
+          npm run build | tee release-reports/build.txt
+          npm run verify:dist -- --rebuild | tee release-reports/link-integrity.txt
+        shell: bash
+      - name: Record scientific verification
+        if: always()
+        run: |
+          for file in release-reports/*.txt; do
+            test -f "$file" || continue
+            echo "### $(basename "$file")" >> "$GITHUB_STEP_SUMMARY"
+            echo '~~~text' >> "$GITHUB_STEP_SUMMARY"
+            tail -n 16 "$file" >> "$GITHUB_STEP_SUMMARY"
+            echo '~~~' >> "$GITHUB_STEP_SUMMARY"
+          done
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: scientific-verification
+          path: release-reports/
+          if-no-files-found: ignore
+          retention-days: 14
+
+  browser-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: npx --no-install playwright install --with-deps chromium
+      - run: npm run build
+      - name: Chromium desktop and mobile suites
+        run: |
+          mkdir -p release-reports
+          npm run test:browser | tee release-reports/chromium.txt
+        shell: bash
+      - name: Record browser verification
+        if: always()
+        run: |
+          if test -f release-reports/chromium.txt; then
+            echo '### Production-subpath Chromium regressions' >> "$GITHUB_STEP_SUMMARY"
+            echo '~~~text' >> "$GITHUB_STEP_SUMMARY"
+            tail -n 25 release-reports/chromium.txt >> "$GITHUB_STEP_SUMMARY"
+            echo '~~~' >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: chromium-regression
+          path: release-reports/
+          if-no-files-found: ignore
+          retention-days: 14

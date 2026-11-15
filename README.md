@@ -1,152 +1,57 @@
-# 🌿 Adaptive Ecosystem Dynamics & Multi-Objective Resource Allocation Framework
+# The Verdant Metamorphosis
 
-> **2025 Interdisciplinary Contest in Modeling (ICM) — Problem E**  
-> 🏆 **Award: Meritorious Winner (M-Award)** | Team #2521959  
-> *Primary Focus: Complex Dynamical Systems, Stochastic Simulation, Multi-Attribute Decision Making & Sustainability*
+**Ecological modeling, reproducible numerical experiments, and transparent decision support for forest-to-farm transitions.**
 
-[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/)
-[![MATLAB](https://img.shields.io/badge/MATLAB-R2023b+-orange.svg)](https://www.mathworks.com/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+Team 2521959 from Fujian Normal University earned a **Meritorious Winner** designation for 2025 ICM Problem E. This portfolio pairs the original team research with an independently developed 2026 engineering extension. [COMAP results](https://www.contest.comap.com/undergraduate/contests/mcm/contests/2025/results/2025_ICM_Problem_E_Results.pdf) · [Certificate](figures/certificate.png) · [Archived award PDF](figures/2521959.pdf)
 
----
+## Research question
 
-## 🌍 Motivation: Bridging Sustainability with Systems Engineering
+When forest becomes farmland, how do changes in species, agricultural cycles, and chemical management interact with the practical need to produce food? The competition paper divides the question into ecological dynamics, seasonal and intervention scenarios, a multi-criteria farm assessment, and a letter for a farmer considering organic practices. [Original submission](paper/2521959.pdf) · [Official Problem E](problem/2025_ICM_Problem_E.pdf) · [Farmer letter, p. 25](paper/2521959.pdf#page=25)
 
-Our team deliberately chose **Problem E (Sustainability & Ecosystem Transitions)** due to a shared commitment to addressing global ecological vulnerability. However, beyond the agricultural context, the core mathematical models developed in this project serve as a **cross-disciplinary bridge to Communication Engineering & Internet of Things (IoT)**:
+**Team-lead reflection.** I chose this problem to apply quantitative modeling to a meaningful sustainability question. I wanted to connect different models to decisions about ecology, production and cost. In the 2026 portfolio, I prioritized traceable assumptions and experiments another reviewer can rerun. [Research Story and retrospective](site/index.html#team-lead)
 
-* **Stochastic Dynamics $\rightarrow$ Network Topology**: Modeling ecosystem species interactions under environmental noise strongly parallels modeling channel interference, packet loss, and node stability in wireless sensor networks.
-* **Multi-Criteria Fusion $\rightarrow$ IoT QoS Optimization**: Synthesizing environmental metrics (5D-OFE) reflects heterogenous data fusion across dynamic IoT edge networks.
-* **Resource Allocation $\rightarrow$ Multi-Objective Control**: Balancing ecological preservation against transition costs maps directly to optimizing energy efficiency vs. latency in communication systems.
+## Explore the portfolio
 
-<div align="center">
-  <img src="figures/Fig2_Workflow.png" alt="System Workflow" width="85%">
-  <p><i>Figure 1: Macro System Workflow and Evaluation Architecture (from MCM Paper)</i></p>
-</div>
+| Area | What to inspect |
+| --- | --- |
+| [Research Story](site/index.html#research) and [Figure Atlas](docs/FIGURE_ATLAS.md) | Seven chapters, original figures, evidence trails and a page-by-page audit. The complete atlas covers 15 numbered figures and the farmer-letter radar. |
+| [Ecological Dynamics Lab](site/index.html#lab) | A reproducible three-population teaching model with seeded Euler–Maruyama, deterministic Euler, signed interactions, phase space, local Jacobian analysis and sensitivity sweeps. A separate Eq. 10 experiment uses the paper’s equation form with synthetic inputs. |
+| [Decision Studio](site/decision/index.html) | Continuous, early and late exposure policies on an aligned grid. AHP, entropy weights, CRITIC, TOPSIS and finite-set Pareto calculations expose how preferences affect rankings. Export the scenario record or decision brief. |
+| [Research Companion](site/companion/index.html) | Browse 18 curated, cited source notes or query them locally. Review and explicitly approve a restricted scenario command before running an existing solver. Run exposure, noise and preference challenges. |
 
----
+| Research Story | Ecological Dynamics Lab |
+| --- | --- |
+| ![Research Story showing the paper’s food web and ecosystem figures with page links](docs/review/story-desktop.jpeg) | ![Population time series and phase space in the illustrative ecological lab](docs/review/lab-desktop.jpeg) |
+| **Decision Studio** | **Research Companion** |
+| ![Producer and consumer trajectories for three controlled exposure schedules](docs/review/decision-desktop.jpeg) | ![Offline source search for bats and bees showing exact PDF page links](docs/review/companion-desktop.jpeg) |
 
-## 🔍 Problem Analysis, Methodology & Code Implementation
+## Reproduce the engineering work
 
-To tackle the complex transition of the Milkwood Farm, we decomposed the problem into four engineering phases, pairing theoretical modeling with numerical code implementation.
+GitHub Pages publication is pending owner review. Build and serve the release candidate locally with Node.js 22 and npm.
 
-### Phase 1: Dynamic Succession Modeling (The AED Framework)
-* **Problem**: How to model the highly non-linear, stochastic transition of degraded ecosystems?
-* **Methodology**: We proposed the **Adaptive Ecological Dynamics (AED)** framework. We utilized coupled **Stochastic Differential Equations (SDEs)** and integrated environmental noise via dynamic Brownian motion, solving it with the **Euler-Maruyama algorithm**.
-
-$$\mathrm{d}X_i(t) = X_i(t) \left( r_i + \sum_{j=1}^{N} A_{ij} X_j(t) \right) \mathrm{d}t + \sigma_i X_i(t) \mathrm{d}W_i(t)$$
-
-| Theoretical Framework (Paper) | Numerical Simulation (Python Code Output) |
-| :---: | :---: |
-| ![AED Framework](figures/Fig5_AED_Framework.png) | ![SDE Simulation Result](figures/aed_simulation_result.png) |
-| *Fig 2: AED Theoretical Framework* | *Fig 3: Code-generated species density trajectory* |
-
-* **Code Module**: `src/python/aed_simulator.py`
-
----
-
-### Phase 2: Dynamic System Stability & Sensitivity
-* **Problem**: Does the proposed transition strategy converge to a stable equilibrium under perturbation?
-* **Methodology**: We utilized **MATLAB** to perform **Jacobian Linearization** at steady-state $X^* = -A^{-1}r$ and conducted rigorous **Lyapunov Stability Analysis**. 
-* **Proof**: Eigenvalue evaluation yields $\lambda_{1,2} = -0.2145 \pm 0.5068\mathrm{i}$ and $\lambda_3 = -0.1593$. Since $\mathrm{Re}(\lambda_i) < 0$, the system is mathematically proven to be **Asymptotically Stable**.
-
-<div align="center">
-  <img src="figures/matlab_phase_portrait.png" alt="MATLAB 3D Phase Portrait" width="60%">
-  <p><i>Fig 4: MATLAB 3D Phase Space Trajectory converging to Lyapunov Equilibrium Node</i></p>
-</div>
-
-* **Code Module**: `src/matlab/aed_sensitivity_analysis.m`
-
----
-
-### Phase 3: Multi-Criteria Data Fusion & Intervention Analysis
-* **Problem**: How to objectively quantify the impact of specific interventions (e.g., Beneficial Insects) across environmental, economic, and social domains?
-* **Methodology**: We synthesized subjective domain knowledge with objective data entropy using a dynamic **AHP-EWM-CRITIC hybrid weighting algorithm**.
-
-| Intervention Analysis (Paper) | Hybrid Weighting Analysis (Python Code Output) |
-| :---: | :---: |
-| ![Beneficial Insects](figures/Fig10_Beneficial_Insects.png) | ![Weighting](figures/hybrid_weighting_result.png) |
-| *Fig 5: Impact of Beneficial Insects* | *Fig 6: 5D-OFE Hybrid Weight Distribution* |
-
-* **Code Module**: `src/python/hybrid_weighting.py`
-
----
-
-### Phase 4: Multi-Objective Optimization & Long-term Forecasting
-* **Problem**: Resolving inherent conflicts between maximizing system resilience and minimizing transition costs over a long period.
-* **Methodology**: Formulated a constrained non-linear multi-objective optimization problem. Solved via **NSGA-II** to construct the Pareto Optimal Front, followed by **TOPSIS** to select the ideal trade-off decision node based on relative closeness coefficients.
-
-$$\min_{\mathbf{x}} \mathbf{F}(\mathbf{x}) = \left[ -f_{\text{stability}}(\mathbf{x}), f_{\text{cost}}(\mathbf{x}) \right]^T$$
-
-| Long-Term Forecast (Paper) | Pareto Optimization & Decision (Python Code Output) |
-| :---: | :---: |
-| ![15 Years Forecast](figures/Fig14_15Years_Forecast.png) | ![Pareto TOPSIS](figures/pareto_topsis_result.png) |
-| *Fig 7: 15-Year System Dynamics Forecast* | *Fig 8: NSGA-II Pareto Front & TOPSIS Decision Node* |
-
-* **Code Module**: `src/python/multi_objective_opt.py`
-
----
-
-## 🏆 Official Award Certificate
-
-This project achieved the **Meritorious Winner (M-Award)** in the 2025 Interdisciplinary Contest in Modeling (ICM), representing the **Top 6%** among 28,000+ participating international teams.
-
-<div align="center">
-  <img src="figures/certificate.png" alt="MCM/ICM 2025 Meritorious Winner Certificate" width="70%">
-  <p><i>Figure 9: Official MCM/ICM 2025 Meritorious Winner Certificate (Team #2521959) — <a href="figures/2521959.pdf" target="_blank">Download PDF Certificate</a></i></p>
-</div>
-
----
-
-## 🛠️ Repository Structure
-
-```text
-2025-ICM-Problem-E/
-├── paper/                     # MCM Contest Paper Submission (PDF)
-├── problem/                   # Official Contest Problem E Statement
-├── figures/                   # Contest paper illustrations, Code-generated plots & Certificate
-├── src/                       # Core Source Code Engine
-│   ├── python/
-│   │   ├── aed_simulator.py            # SDE Euler-Maruyama Solver
-│   │   ├── hybrid_weighting.py         # AHP-EWM-CRITIC Data Fusion
-│   │   └── multi_objective_opt.py      # NSGA-II & TOPSIS Engine
-│   └── matlab/
-│       └── aed_sensitivity_analysis.m  # Jacobian & Lyapunov Stability
-└── README.md                  # Project documentation & case study
-```
-## 🚀 Quick Start & Reproduction
-
-### Prerequisites
-* **Python 3.10+** (`numpy`, `matplotlib`, `pandas`)
-* **MATLAB R2022b+** (for Lyapunov stability engine)
-
----
-
-### 1. Run Python Simulation Pipeline
-
-```bash
-# Clone repository
-git clone [https://github.com/TYF009/2025-ICM-Problem-E.git](https://github.com/TYF009/2025-ICM-Problem-E.git)
-cd 2025-ICM-Problem-E
-
-# Run Stochastic SDE Solver
-python src/python/aed_simulator.py
-
-# Run Hybrid Data Fusion Weighting
-python src/python/hybrid_weighting.py
-
-# Run NSGA-II & TOPSIS Optimization Engine
-python src/python/multi_objective_opt.py
+```sh
+npm ci --ignore-scripts
+npm run build
+npm run verify:dist -- --rebuild
+npm run preview
 ```
 
-### 2. Run MATLAB Stability Engine
-Open MATLAB, navigate to src/matlab/, and execute:
+Open the URL printed by the preview server. It mounts `dist/` under the repository-name subpath, including the root landing page, the three site routes and the evidence pages. To reproduce a simulated run, use the preset and seed shown in its output, then download the JSON or CSV record to retain parameters, units, solver version and samples.
 
-```Matlab
-run('aed_sensitivity_analysis.m')
+```sh
+npm test
+python -m pip install -r tools/requirements-release.txt
+python tools/verify-paper.py
+npx --no-install playwright install chromium
+npm run test:browser
 ```
----
 
-## 📜 Citation & Credits
-Contest Paper: The Silent Shift, The Verdant Metamorphosis: Adaptive Dynamics & Evaluation Framework (M-Award, Team #2521959).
+On Linux CI, use `npx --no-install playwright install --with-deps chromium`. The site runtime uses static HTML, CSS and JavaScript modules. The lockfile pins the build and test tools. [Verification workflow](.github/workflows/portfolio-smoke.yml) · [Release checklist](docs/RELEASE_CHECKLIST.md)
 
-Author Focus: System architecture design, stochastic dynamic modeling, multi-objective algorithm integration, and Python/MATLAB dual-engine implementation.
+## Evidence and limitations
+
+- **Original 2025 contest research.** The submission reports species, exposure, sensitivity and Milkwood forecast results. A completed source audit maps the original figures and 29 numbered equations. It documents the Eq. 9 state-symbol mismatch, Eq. 17 cost expression and Eq. 27 malformed coefficient. [Page audit](docs/PAPER_AUDIT.md) · [Model traceability](docs/MODEL_TRACEABILITY.md) · [Historical scripts](src/) · [Archived figures](figures/)
+- **Post-contest numerical exploration.** The models use synthetic coefficients, population indices and simulation time. The archive lacks fitted inputs, initial histories, economic training series, historical optimizer candidates and field measurements. Neither the reported trajectories nor farm outcomes have been independently reproduced or validated here. [Model implementation](docs/MODEL_IMPLEMENTATION_PLAN.md) · [Decision methods](docs/DECISION_STUDIO_SPEC.md)
+- **2026 AI-assisted engineering.** Codex assisted development. The companion uses deterministic retrieval and a restricted parser, with no runtime LLM or paid API. The optional server adapter is a design for later security review. [Architecture](docs/AI_RESEARCH_ASSISTANT_SPEC.md) · [Evaluation](docs/AI_EVALUATION.md)
+
+The original paper, prompt, separate award artifacts and historical scripts are preserved in Git. Publication or reuse requires review of the source PDFs and embedded artwork. [Rights notice](LICENSE) · [Attribution and reuse](docs/REUSE_RIGHTS.md)

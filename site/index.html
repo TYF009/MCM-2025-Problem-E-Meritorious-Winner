@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#112822">
+<meta name="description" content="An interactive sustainability modeling portfolio from the 2025 ICM Problem E Meritorious Winner research, with clearly labeled post-contest illustrative demonstrations.">
+<title>The Verdant Metamorphosis — Sustainability Modeling Laboratory</title>
+<style>
+:root{--bg:#f6f6f1;--ink:#142820;--muted:#5f7169;--line:#dce2d9;--forest:#153c31;--accent:#2d8a65;--mint:#b5e7bf;--card:#fff;--yellow:#ecd8a8;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--bg)}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0}a{color:inherit}button,input,select{font:inherit}a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #c29c43;outline-offset:3px}.shell{max-width:1160px;padding:0 24px;margin:auto}.nav{background:#10271f;color:white;position:sticky;top:0;z-index:5;border-bottom:1px solid #345346}.navinner{display:flex;justify-content:space-between;align-items:center;min-height:70px;gap:20px}.logo{font-size:13px;font-weight:800;letter-spacing:.09em;text-decoration:none}.navlinks{display:flex;gap:20px;flex-wrap:wrap;font-size:13px}.navlinks a{text-decoration:none;color:#d7e8d9}.hero{background:linear-gradient(150deg,#10281f,#184d3a 85%);color:#fff;padding:78px 0 90px;overflow:hidden}.hero-layout{display:grid;grid-template-columns:1.1fr .9fr;gap:35px;align-items:center}.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:11px;font-weight:800;color:#9dd5b5}.hero h1{font-family:Georgia,serif;font-size:clamp(43px,5vw,75px);line-height:1.06;letter-spacing:-.04em;margin:18px 0}.hero p{font-size:17px;line-height:1.7;color:#d4e5dc;max-width:650px}.buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}.button{display:inline-block;padding:13px 18px;border-radius:8px;background:#d2edca;text-decoration:none;color:#133328;font-size:13px;font-weight:750;border:1px solid transparent;cursor:pointer}.button.ghost{background:transparent;color:#f0f9f1;border-color:#6c9683}.landscape{position:relative;border-radius:20px;overflow:hidden;min-height:300px;background:linear-gradient(160deg,#a9c6a9 0 36%,#76a279 36% 50%,#d0bb75 50% 70%,#63845a 70%);box-shadow:0 30px 70px #07191180}.landscape:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(120deg,transparent 0 18px,#f7e3a140 19px 22px),linear-gradient(transparent,#172c1a60)}.landscape:after{content:"LIVING SYSTEMS  /  HUMAN DECISIONS";position:absolute;bottom:25px;left:24px;font-size:10px;font-weight:800;letter-spacing:.22em;color:white}.pill{display:inline-block;border:1px solid #87b79a;color:#c8e9d2;padding:6px 10px;border-radius:20px;font-size:11px;letter-spacing:.03em}.section{padding:74px 0;scroll-margin-top:80px}.section:nth-of-type(even){background:#edf1e8}.kicker{font-size:12px;color:#367b59;font-weight:800;text-transform:uppercase;letter-spacing:.13em}.section h2{font-family:Georgia,serif;font-weight:500;letter-spacing:-.03em;font-size:clamp(28px,3.4vw,46px);margin:10px 0 12px}.lede{max-width:790px;color:var(--muted);line-height:1.75;font-size:16px}.three{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px;min-width:0}.card h3{margin:10px 0;font-size:18px}.card p{color:var(--muted);line-height:1.7;font-size:14px}.tag{font-size:10px;letter-spacing:.11em;font-weight:800;color:#317354;text-transform:uppercase}.figure{display:block;width:100%;height:195px;object-fit:contain;background:#f9faf7;border:1px solid #e1e8df;border-radius:10px;padding:8px}.evidence{font-size:12px;color:#67786f;line-height:1.55}.evidence a{color:#1d684c}.journal{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.journal .card{border-left:4px solid #5caa7c}.model{display:grid;grid-template-columns:330px 1fr;gap:20px;align-items:start}.controls{display:grid;gap:19px}.control label{display:flex;justify-content:space-between;font-size:13px;font-weight:650;margin-bottom:8px}.control input{width:100%;accent-color:#287857}.chartwrap{min-height:340px}.charthead{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}.charthead small{color:var(--muted)}svg#chart{display:block;width:100%;height:330px;background:#fcfdfa;border-radius:10px}.legend{display:flex;gap:20px;flex-wrap:wrap;font-size:12px;color:var(--muted)}.legend span:before{content:"";display:inline-block;width:12px;height:3px;background:var(--dot);margin:0 6px 3px 0}.notice{background:#fff5df;border:1px solid #ebd9ae;border-radius:10px;padding:13px 16px;color:#735b2f;font-size:12px;line-height:1.7}.doclinks{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.doclinks a{border:1px solid var(--line);padding:10px 14px;background:white;text-decoration:none;border-radius:8px;font-size:13px;font-weight:650}.foot{padding:44px 0;background:#10271f;color:#c2d7cc;font-size:13px}.foot p{line-height:1.8}.statbar{display:flex;gap:18px;flex-wrap:wrap;margin-top:25px}.stat{border-left:1px solid #739584;padding-left:16px;font-size:13px;color:#d2e8db}.stat strong{display:block;font-family:Georgia,serif;font-size:26px;color:white}.readout{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0}.readout .card{padding:13px}.readout strong{display:block;font-size:23px}.readout small{font-size:11px;color:var(--muted)}@media(max-width:800px){.hero-layout,.model{grid-template-columns:1fr}.three,.journal{grid-template-columns:1fr}.hero{padding:50px 0}.landscape{min-height:210px}.navlinks{gap:10px}.navlinks a{font-size:11px}.section{padding:50px 0}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+<link rel="stylesheet" href="research-story.css">
+<link rel="stylesheet" href="models/console.css">
+<link rel="stylesheet" href="portfolio.css">
+</head>
+<body>
+<a class="story-skip" href="#research">Skip to Research Story</a>
+<header class="portfolio-header nav">
+  <div class="portfolio-shell">
+    <a class="portfolio-brand" href="#home">The Verdant Metamorphosis</a>
+    <nav aria-label="Portfolio"><a href="#research">Research Story</a><a href="#figures">Figure Atlas</a><a href="#lab">Ecological Dynamics Lab</a><a href="./decision/">Decision Studio</a><a href="./companion/">Research Companion</a><a href="#evidence">Original Evidence</a><a href="#team-lead">Team Lead</a></nav>
+  </div>
+</header>
+<main>
+<section id="home" class="hero" aria-labelledby="home-title">
+  <div class="shell portfolio-hero">
+    <span class="eyebrow">2025 ICM · Problem E · Meritorious Winner · Team 2521959</span>
+    <h1 id="home-title">The Verdant Metamorphosis</h1>
+    <p class="hero-lede">An engineering portfolio on what changes when forest becomes farmland, and how to reason about the trade-offs that follow.</p>
+    <div class="buttons"><a class="button" href="#research">Read the Research Story</a><a class="button ghost" href="../paper/2521959.pdf">Read the Original Paper</a></div>
+    <p class="timeline"><strong>2025 contest research.</strong> Our team linked ecological dynamics, seasonal change and farm decisions in a model-based study. <strong>2026 portfolio.</strong> Explore the source audit, synthetic numerical experiments and offline research tools built with Codex assistance.</p>
+    <p class="hero-foot"><a href="#team-lead">Team-lead retrospective</a> · <a href="#evidence">Original evidence and award record</a></p>
+  </div>
+</section>
+<section class="section portfolio-start" aria-labelledby="start-title">
+  <div class="shell">
+    <h2 id="start-title">Explore the work</h2>
+    <div class="portfolio-cards">
+      <article><span>Original 2025 contest research</span><h3><a href="#research">Research Story</a></h3><p>Follow seven chapters from the original Problem E question to the farmer letter. Open a figure or decision trail to inspect the evidence.</p></article>
+      <article><span>Post-contest numerical exploration</span><h3><a href="#lab">Ecological Dynamics Lab</a></h3><p>Start with the seeded model, change growth or noise, then compare trajectories. The Eq. 10 example uses the paper’s equation form with synthetic inputs.</p></article>
+      <article><span>Post-contest decision analysis</span><h3><a href="decision/">Decision Studio</a></h3><p>Compare three exposure policies on an aligned grid, adjust decision weights, and export a brief.</p></article>
+      <article><span>2026 AI-assisted engineering</span><h3><a href="companion/">Research Companion</a></h3><p>Try a question about bats and bees, or review a scenario command before running it. Source retrieval and command parsing run locally with no LLM.</p></article>
+    </div>
+  </div>
+</section>
+<section id="research" class="section story" aria-labelledby="story-title" tabindex="-1">
+  <div class="shell">
+    <header class="story-intro">
+      <h2 id="story-title">Research Story</h2>
+      <p class="lede">Follow the team’s analysis from forest conversion to a decision about organic farming. Open a technical note or trace a model claim to its page in the submission.</p>
+      <ul class="story-key" aria-label="Evidence labels">
+        <li><span class="story-badge">2025 Contest Research</span> Submitted methods, figures and reported results.</li>
+        <li><span class="story-badge story-badge--reflection">2026 AI-assisted Interpretation</span> Source-linked explanations and reflections.</li>
+        <li><a class="story-badge story-badge--demo" href="#lab">Illustrative Numerical Demo</a> Independent teaching model.</li>
+      </ul>
+    </header>
+    <nav class="story-nav" aria-label="Research chapters">
+      <ul>
+        <li><a href="#why">Why sustainability?</a></li>
+        <li><a href="#workflow">Research workflow</a></li>
+        <li><a href="#ecosystem">Ecosystem evolution</a></li>
+        <li><a href="#interventions">Interventions</a></li>
+        <li><a href="#trade-offs">Farm trade-offs</a></li>
+        <li><a href="#farmer-letter">Farmer letter</a></li>
+        <li><a href="#team-lead">Team leadership</a></li>
+      </ul>
+    </nav>
+    <fieldset class="story-view">
+      <legend>Reading view</legend>
+      <label><input type="radio" name="story-view" value="paper" checked> Paper View (submitted paper summary)</label>
+      <label><input type="radio" name="story-view" value="interpretation"> Interpretation View</label>
+    </fieldset>
+    <article class="story-chapter" id="why" aria-labelledby="why-title">
+      <header>
+        <span class="story-badge">2025 Contest Research</span>
+        <h3 id="why-title">Why sustainability?</h3>
+        <p>A farm has to produce food and stay economically viable while depending on the soil, organisms and ecological processes that make production possible. Our engineering team used Problem E to study what happens to that balance when forest becomes farmland.</p>
+      </header>
+      <div class="story-lens story-paper"><h4>Paper View</h4><p>Changing seasons and returning species are natural processes. Clearing habitat, applying chemicals and changing farming practices are management decisions. The challenge was to examine how these influences interact over time.</p></div>
+      <div class="story-lens story-interpretation"><h4>Interpretation View</h4><span class="story-badge story-badge--reflection">2026 AI-assisted Interpretation</span><p>Read the problem as a systems question. A management decision can affect crop output now and the resilience of the same farm later. That makes the time horizon part of the decision.</p></div>
+
+      <div class="story-figures">
+      <figure class="story-figure">
+        <a href="../paper/2521959.pdf#page=3" aria-label="Open figure 1 in the submitted paper, PDF page 3">
+          <img src="../docs/paper-figures/fig-01.webp" alt="A three-part landscape transitions from forest to farm." loading="lazy">
+        </a>
+        <figcaption>
+          <span class="story-badge">2025 Contest Research</span>
+          <a href="../paper/2521959.pdf#page=3">Figure 1 · PDF p. 3</a>
+          <span>The Shift: Forest to Farmland</span>
+        </figcaption>
+      </figure>
+      </div>
+      <details class="story-technical">
+        <summary>Technical details and limits</summary>
+        <p>The SDG connections are thematic. The study does not measure progress against UN indicators.</p>
+<ul class="story-sdgs">
+  <li><a href="https://sdgs.un.org/goals/goal2">SDG 2</a> · Resilient food production</li>
+  <li><a href="https://sdgs.un.org/goals/goal12">SDG 12</a> · Responsible production and chemical use</li>
+  <li><a href="https://sdgs.un.org/goals/goal15">SDG 15</a> · Habitat and biodiversity</li>
+</ul>
+      </details>
+      <p class="story-sources"><a href="../paper/2521959.pdf#page=3">Paper context</a> · <a href="../problem/2025_ICM_Problem_E.pdf#page=1">Official prompt, p. 1</a></p>
+    </article>
+    <article class="story-chapter" id="workflow" aria-labelledby="workflow-title">
+      <header>
+        <span class="story-badge">2025 Contest Research</span>
+        <h3 id="workflow-title">Decomposing the problem</h3>
+        <p>The prompt asks how a cleared area becomes a working farm, how species return, and how reducing chemical dependence could affect productivity and stability. It also asks the team to communicate choices to a farmer considering organic practices.</p>
+      </header>
+      <div class="story-lens story-paper"><h4>Paper View</h4><p>Figure 2 connects problem analysis to two tasks. The AED model describes ecological changes, while 5D-OFE organizes environmental and economic indicators for the organic-farm case.</p></div>
+      <div class="story-lens story-interpretation"><h4>Interpretation View</h4><span class="story-badge story-badge--reflection">2026 AI-assisted Interpretation</span><p>Read the submitted workflow as a map of the analysis. The archive supports the sequence of analytical tasks shown here. The team's internal deliberations and the timing of individual decisions are undocumented.</p></div>
+
+      <div class="story-figures">
+      <figure class="story-figure">
+        <a href="../paper/2521959.pdf#page=5" aria-label="Open figure 2 in the submitted paper, PDF page 5">
+          <img src="../docs/paper-figures/fig-02.webp" alt="Flowchart links problem analysis to AED, 5D-OFE and the farm letter." loading="lazy">
+        </a>
+        <figcaption>
+          <span class="story-badge">2025 Contest Research</span>
+          <a href="../paper/2521959.pdf#page=5">Figure 2 · PDF p. 5</a>
+          <span>Quantification of Task Processes</span>
+        </figcaption>
+      </figure>
+      </div>
+      <details class="story-technical">
+        <summary>Technical details and limits</summary>
+        <ol class="story-workflow">
+  <li><a href="#why">Problem</a> · Forest conversion and farm viability.</li>
+  <li><a href="../paper/2521959.pdf#page=6">Assumptions</a> · Simplified chemical effects and selected inputs.</li>
+  <li><a href="#ecosystem">Methods</a> · Food web, AED and seasonal ranks.</li>
+  <li><a href="#interventions">Tests</a> · Succession and management scenarios.</li>
+  <li><a href="#trade-offs">Evidence</a> · Original figures, decision analysis and forecasts.</li>
+  <li><a href="../docs/MODEL_TRACEABILITY.md">Limitations</a> · Missing inputs and unresolved equations.</li>
+</ol>
+      </details>
+      <p class="story-sources"><a href="../paper/2521959.pdf#page=4">Paper overview</a> · <a href="../paper/2521959.pdf#page=6">Paper assumptions</a> · <a href="../problem/2025_ICM_Problem_E.pdf#page=2">Official prompt, p. 2</a></p>
+    </article>
+    <article class="story-chapter" id="ecosystem" aria-labelledby="ecosystem-title">
+      <header>
+        <span class="story-badge">2025 Contest Research</span>
+        <h3 id="ecosystem-title">How the ecosystem evolves</h3>
+        <p>Crops and other producers support consumers. Decomposers return nutrients to the soil. Clearing forest changes those relationships, and growing, harvesting and other farm stages change them again.</p>
+      </header>
+      <div class="story-lens story-paper"><h4>Paper View</h4><p>The paper presents producer and consumer species counts by quarter and reports a steep decline around conversion followed by partial recovery. A separate Farmland Phenology Index (FPI) organizes energy into six ordinal levels across five farm stages.</p></div>
+      <div class="story-lens story-interpretation"><h4>Interpretation View</h4><span class="story-badge story-badge--reflection">2026 AI-assisted Interpretation</span><p>The two figures answer different questions. Species counts describe how many kinds are represented. FPI ranks relative conditions across the farm cycle. Read the FPI scale as ordered levels with unspecified physical units.</p></div>
+
+      <div class="story-figures">
+      <figure class="story-figure">
+        <a href="../paper/2521959.pdf#page=6" aria-label="Open figure 3 in the submitted paper, PDF page 6">
+          <img src="../docs/paper-figures/fig-03.webp" alt="Arrows connect crops, herbivores, secondary consumers and decomposers." loading="lazy">
+        </a>
+        <figcaption>
+          <span class="story-badge">2025 Contest Research</span>
+          <a href="../paper/2521959.pdf#page=6">Figure 3 · PDF p. 6</a>
+          <span>The Food Web</span>
+        </figcaption>
+      </figure>
+      <figure class="story-figure">
+        <a href="../paper/2521959.pdf#page=8" aria-label="Open figure 5 in the submitted paper, PDF page 8">
+          <img src="../docs/paper-figures/fig-05.webp" alt="Diagram branches into linear factors, four nonlinear factors and three noise types." loading="lazy">
+        </a>
+        <figcaption>
+          <span class="story-badge">2025 Contest Research</span>
+          <a href="../paper/2521959.pdf#page=8">Figure 5 · PDF p. 8</a>
+          <span>Framework of the AED Model</span>
+        </figcaption>
+      </figure>
+      <figure class="story-figure">
+        <a href="../paper/2521959.pdf#page=12" aria-label="Open figure 6 in the submitted paper, PDF page 12">
+          <img src="../docs/paper-figures/fig-06.webp" alt="Stacked line charts show producer and consumer species counts by quarter around conversion." loading="lazy">
+        </a>
+        <figcaption>
+          <span class="story-badge">2025 Contest Research</span>
+          <a href="../paper/2521959.pdf#page=12">Figure 6 · PDF p. 12</a>
+          <span>Changes in Population Quantity in the Forest-Farmland System</span>
+        </figcaption>
+      </figure>
+      <figure class="story-figure">
+        <a href="../paper/2521959.pdf#page=13" aria-label="Open figure 7 in the submitted paper, PDF page 13">
+          <img src="../docs/paper-figures/fig-07.webp" alt="Four overlapping energy curves span growing, harvesting, decomposition, plowing and sowing." loading="lazy">
+        </a>
+        <figcaption>
+          <span class="story-badge">2025 Contest Research</span>
+          <a href="../paper/2521959.pdf#page=13">Figure 7 · PDF p. 13</a>
+          <span>Changes in Periodic Energy Levels</span>
+        </figcaption>
+      </figure>
+      </div>
+      <details class="story-technical">
+        <summary>Technical details and limits</summary>
+        <p>In AED, Eq. 1 tracks juvenile and adult balances. Eq. 7 combines age-dependent population change, interactions, random disturbance and delay. The paper gives the equation structure. Reproducing the figures would require the rates, age profiles, histories and original series.</p>
+      </details>
+    <aside class="story-trails" aria-label="Research decision trail">
+      <h4>Research decision trail</h4>
+      <details class="story-trail" id="succession">
+        <summary>What changed after conversion?</summary>
+        <dl>
+          <dt>Question</dt><dd>What changed after conversion?</dd>
+          <dt>Model / assumption</dt><dd>Track producers and consumers separately over quarters.</dd>
+          <dt>Paper evidence</dt><dd><a href="../paper/2521959.pdf#page=12">Submitted paper, PDF p. 12</a></dd>
+          <dt>Reported finding</dt><dd>The paper reports a decline followed by partial recovery.</dd>
+          <dt>Open limitation</dt><dd>The archived series and data collection protocol are missing.</dd>
+        </dl>
+      </details>
+    </aside>
+      <p class="story-sources"><a href="../paper/2521959.pdf#page=9">AED Eq. 1</a> · <a href="../paper/2521959.pdf#page=11">AED Eq. 7</a> · <a href="../paper/2521959.pdf#page=13">FPI results</a></p>
+    </article>
+    <article class="story-chapter" id="interventions" aria-labelledby="interventions-title">
+      <header>
+        <span class="story-badge">2025 Contest Research</span>
+        <h3 id="interventions-title">Changing the system</h3>
+        <p>The study considers dandelions and snails returning, withdrawal of chemical pesticides, and separate scenarios involving bats and bees. The official prompt specifically asks about herbicide removal. The paper models broader pesticide withdrawal.</p>
+      </header>
+      <div class="story-lens story-paper"><h4>Paper View</h4><p>The paper reports that the modeled native densities grew and then tended to stabilize. The withdrawal scenario shows temporary peaks in ecological indicators. The bat and bee scenarios report improving self-regulation and reduced disturbance sensitivity. These are outcomes reported by the paper's models.</p></div>
+      <div class="story-lens story-interpretation"><h4>Interpretation View</h4><span class="story-badge story-badge--reflection">2026 AI-assisted Interpretation</span><p>Treat the reported patterns as hypotheses for a paired field comparison. A herbicide-specific comparison would need its own dose schedule and control. Separate outcomes for pest control and pollination would help distinguish the roles of bats and bees.</p></div>
+
+      <div class="story-figures">
+      <figure class="story-figure">
+        <a href="../paper/2521959.pdf#page=14" aria-label="Open figure 8 in the submitted paper, PDF page 14">
+          <img src="../docs/paper-figures/fig-08.webp" alt="Snail and dandelion density points are shown across months." loading="lazy">
+        </a>
+        <figcaption>
+          <span class="story-badge">2025 Contest Research</span>
+          <a href="../paper/2521959.pdf#page=14">Figure 8 · PDF p. 14</a>
+          <span>Density Iteration of Native Organisms</span>
+        </figcaption>
+      </figure>
+      <figure class="story-figure">
+        <a href="../paper/2521959.pdf#page=15" aria-label="Open figure 9 in the submitted paper, PDF page 15">
+          <img src="../docs/paper-figures/fig-09.webp" alt="Bars show six ecological indicators after pesticide removal over time." loading="lazy">
+        </a>
+        <figcaption>
+          <span class="story-badge">2025 Contest Research</span>
+          <a href="../paper/2521959.pdf#page=15">Figure 9 · PDF p. 15</a>
+          <span>Impact on Ecological Indicators after Pesticide Removal</span>
+        </figcaption>
+      </figure>
+      <figure class="story-figure">
+        <a href="../paper/2521959.pdf#page=16" aria-label="Open figure 10 in the submitted paper, PDF page 16">
+          <img src="../docs/paper-figures/fig-10.webp" alt="Bat and bee panels compare rising self-regulation and falling disturbance sensitivity over ten years." loading="lazy">
+        </a>
+        <figcaption>
+          <span class="story-badge">2025 Contest Research</span>
+          <a href="../paper/2521959.pdf#page=16">Figure 10 · PDF p. 16</a>
+          <span>Comparison of Indicators after the Introduction of Beneficial Insects</span>
+        </figcaption>
+      </figure>
+      </div>
+      <details class="story-technical">
+        <summary>Technical details and limits</summary>
+        <p>Eq. 8 expands AED to four states. Eq. 9 uses a different symbol for the fourth initial state and supplies no numerical values. Eq. 10 adds a chemical-dependent term. Eq. 11 models aggregate stability, so the separate bat predation and pollination pathways cannot be recovered from it. The disturbance runs and interval definitions behind Fig. 10 are unavailable.</p>
+      </details>
+    <aside class="story-trails" aria-label="Research decision trail">
+      <h4>Research decision trail</h4>
+      <details class="story-trail" id="native-return">
+        <summary>How might returning species affect the system?</summary>
+        <dl>
+          <dt>Question</dt><dd>How might returning species affect the system?</dd>
+          <dt>Model / assumption</dt><dd>Extend AED to four states to include dandelions and snails.</dd>
+          <dt>Paper evidence</dt><dd><a href="../paper/2521959.pdf#page=14">Submitted paper, PDF p. 14</a></dd>
+          <dt>Reported finding</dt><dd>The paper reports modeled growth followed by fluctuating densities.</dd>
+          <dt>Open limitation</dt><dd>Numeric initial conditions and the state-symbol correction are unverified.</dd>
+        </dl>
+      </details>
+      <details class="story-trail" id="withdrawal">
+        <summary>What follows pesticide withdrawal?</summary>
+        <dl>
+          <dt>Question</dt><dd>What follows pesticide withdrawal?</dd>
+          <dt>Model / assumption</dt><dd>Represent chemical effects with a time-dependent term in Eq. 10.</dd>
+          <dt>Paper evidence</dt><dd><a href="../paper/2521959.pdf#page=15">Submitted paper, PDF p. 15</a></dd>
+          <dt>Reported finding</dt><dd>The paper reports that several indicators rose, peaked and then declined.</dd>
+          <dt>Open limitation</dt><dd>There is no archived exposure schedule or herbicide-only comparison.</dd>
+        </dl>
+      </details>
+      <details class="story-trail" id="beneficial-species">
+        <summary>How do bats and bees compare?</summary>
+        <dl>
+          <dt>Question</dt><dd>How do bats and bees compare?</dd>
+          <dt>Model / assumption</dt><dd>Compare separate scenarios with the aggregate AED-I stability model.</dd>
+          <dt>Paper evidence</dt><dd><a href="../paper/2521959.pdf#page=16">Submitted paper, PDF p. 16</a></dd>
+          <dt>Reported finding</dt><dd>The paper reports lower disturbance sensitivity and higher self-regulation in both scenarios.</dd>
+          <dt>Open limitation</dt><dd>Species-specific calibration, interval construction and field validation are missing.</dd>
+        </dl>
+      </details>
+    </aside>
+      <p class="story-sources"><a href="../paper/2521959.pdf#page=14">Native species model</a> · <a href="../paper/2521959.pdf#page=15">Pesticide withdrawal</a> · <a href="../paper/2521959.pdf#page=16">Bat and bee comparison</a> · <a href="../problem/2025_ICM_Problem_E.pdf#page=2">Official herbicide question</a></p>
+    </article>
+    <article class="story-chapter" id="trade-offs" aria-labelledby="trade-offs-title">
+      <header>
+        <span class="story-badge">2025 Contest Research</span>
+        <h3 id="trade-offs-title">Weighing farm trade-offs</h3>
+        <p>A farm option can protect soil or biodiversity while raising labor costs or reducing near-term returns. The paper puts ecological and economic outcomes side by side in its Milkwood case study.</p>
+      </header>
+      <div class="story-lens story-paper"><h4>Paper View</h4><p>The 5D-OFE evaluation uses environmental conditions, ecological metrics, crop parameters, policy economics and soil fertility. The paper reports hybrid weights, a comparison of environmental and economic objectives, and forecasts of sustainability and monetary outcomes.</p></div>
+      <div class="story-lens story-interpretation"><h4>Interpretation View</h4><span class="story-badge story-badge--reflection">2026 AI-assisted Interpretation</span><p>Weights express what counts in a comparison. The paper also constrains choices using groundwater recharge and crop rotation. Raising the priority of soil fertility can change which option ranks highest even when the feasible choices stay the same. The projected trajectories describe the paper's scenario, with no archived field benchmark for assessing forecast accuracy.</p></div>
+
+      <div class="story-figures">
+      <figure class="story-figure">
+        <a href="../paper/2521959.pdf#page=17" aria-label="Open figure 11 in the submitted paper, PDF page 17">
+          <img src="../docs/paper-figures/fig-11.webp" alt="Table maps ten indicators to the five organic farming dimensions." loading="lazy">
+        </a>
+        <figcaption>
+          <span class="story-badge">2025 Contest Research</span>
+          <a href="../paper/2521959.pdf#page=17">Figure 11 · PDF p. 17</a>
+          <span>Indicators selected</span>
+        </figcaption>
+      </figure>
+      <figure class="story-figure">
+        <a href="../paper/2521959.pdf#page=20" aria-label="Open figure 12 in the submitted paper, PDF page 20">
+          <img src="../docs/paper-figures/fig-12.webp" alt="A two-ring chart shows aggregate and individual indicator weights." loading="lazy">
+        </a>
+        <figcaption>
+          <span class="story-badge">2025 Contest Research</span>
+          <a href="../paper/2521959.pdf#page=20">Figure 12 · PDF p. 20</a>
+          <span>Future sustainability and benefits of the farm</span>
+        </figcaption>
+      </figure>
+      <figure class="story-figure">
+        <a href="../paper/2521959.pdf#page=22" aria-label="Open figure 13 in the submitted paper, PDF page 22">
+          <img src="../docs/paper-figures/fig-13.webp" alt="An objective-space scatter plot shows a fitted line and highlighted selection region." loading="lazy">
+        </a>
+        <figcaption>
+          <span class="story-badge">2025 Contest Research</span>
+          <a href="../paper/2521959.pdf#page=22">Figure 13 · PDF p. 22</a>
+          <span>Multiple objective fitting</span>
+        </figcaption>
+      </figure>
+      <figure class="story-figure">
+        <a href="../paper/2521959.pdf#page=23" aria-label="Open figure 14 in the submitted paper, PDF page 23">
+          <img src="../docs/paper-figures/fig-14.webp" alt="One panel shows the sustainability score; the other shows economic benefit, income and cost projections." loading="lazy">
+        </a>
+        <figcaption>
+          <span class="story-badge">2025 Contest Research</span>
+          <a href="../paper/2521959.pdf#page=23">Figure 14 · PDF p. 23</a>
+          <span>Future sustainability and benefits of the farm</span>
+        </figcaption>
+      </figure>
+      <figure class="story-figure">
+        <a href="../paper/2521959.pdf#page=23" aria-label="Open figure 15 in the submitted paper, PDF page 23">
+          <img src="../docs/paper-figures/fig-15.webp" alt="Two groups of violin plots compare distributions of linear and nonlinear sensitivity indices." loading="lazy">
+        </a>
+        <figcaption>
+          <span class="story-badge">2025 Contest Research</span>
+          <a href="../paper/2521959.pdf#page=23">Figure 15 · PDF p. 23</a>
+          <span>Sensitivity Analysis</span>
+        </figcaption>
+      </figure>
+      </div>
+      <details class="story-technical">
+        <summary>Forecast and sensitivity limits</summary>
+        <p>The paper describes AHP for pairwise judgments, entropy weighting for differences in the data, and CRITIC for variability and correlation. It reports using NSGA-II to search for alternatives and TOPSIS to select a compromise. It names ARIMA(2,1,2) for forecasting and perturbs AED inputs by 10% for sensitivity. Missing matrices, search settings and training data, plus the malformed coefficient in Eq. 27, prevent a faithful rerun. The sensitivity results do not establish global stability.</p>
+      </details>
+    <aside class="story-trails" aria-label="Research decision trail">
+      <h4>Research decision trail</h4>
+      <details class="story-trail" id="farm-compromise">
+        <summary>How can ecological and economic objectives be balanced?</summary>
+        <dl>
+          <dt>Question</dt><dd>How can ecological and economic objectives be balanced?</dd>
+          <dt>Model / assumption</dt><dd>Use weighted objectives and constraints, then select a compromise by distance to an ideal option.</dd>
+          <dt>Paper evidence</dt><dd><a href="../paper/2521959.pdf#page=22">Submitted paper, PDF p. 22</a></dd>
+          <dt>Reported finding</dt><dd>The paper reports a preferred Milkwood solution after fitting and comparison.</dd>
+          <dt>Open limitation</dt><dd>Decision-variable mappings, candidate solutions and ranking settings are unavailable.</dd>
+        </dl>
+      </details>
+    </aside>
+      <p class="story-sources"><a href="../paper/2521959.pdf#page=19">Weight methods</a> · <a href="../paper/2521959.pdf#page=21">Objectives and forecast method</a> · <a href="../paper/2521959.pdf#page=22">Milkwood constraints</a> · <a href="../paper/2521959.pdf#page=23">Projections and sensitivity</a></p>
+    </article>
+    <article class="story-chapter" id="farmer-letter" aria-labelledby="farmer-letter-title">
+      <header>
+        <span class="story-badge">2025 Contest Research</span>
+        <h3 id="farmer-letter-title">From models to the farmer letter</h3>
+        <p>Team 2521959 addressed its original letter to Milkwood farmers. The paper turns the analysis into proposals for restoring habitat, managing pests and developing other revenue sources.</p>
+      </header>
+      <div class="story-lens story-paper"><h4>Paper View</h4><p>The letter links the recommendations to modeled ecological recovery and future earnings under the organic strategy.</p></div>
+      <div class="story-lens story-interpretation"><h4>Interpretation View</h4><span class="story-badge story-badge--reflection">2026 AI-assisted Interpretation</span><p>Use the letter to see how a technical result becomes a recommendation. A farmer would still need to check local costs, baseline conditions and applicable organic standards.</p></div>
+      <h4>Summary of reported recommendations</h4>
+<ul>
+  <li>Plan restoration areas, plant nitrogen-fixing plants and monitor soil microorganisms.</li>
+  <li>Use protective nets and habitat for natural pest enemies.</li>
+  <li>Explore tourism and education activities as additional sources of income.</li>
+</ul>
+
+      <div class="story-figures">
+      <figure class="story-figure">
+        <a href="../paper/2521959.pdf#page=25" aria-label="Open unnumbered radar chart in the submitted paper, PDF page 25">
+          <img src="../docs/paper-figures/letter-radar.webp" alt="Unnumbered radar chart in the Milkwood farmer letter." loading="lazy">
+        </a>
+        <figcaption>
+          <span class="story-badge">2025 Contest Research</span>
+          <a href="../paper/2521959.pdf#page=25">Unnumbered radar chart · PDF p. 25</a>
+          <span>Radar chart from the Milkwood farmer letter</span>
+        </figcaption>
+      </figure>
+      </div>
+      <details class="story-technical">
+        <summary>Technical details and limits</summary>
+        <p>The radar chart compares indicators using inputs and baselines that are unavailable. The letter's timing and recovery claims are contest projections. Actual farm outcomes and certification were not established.</p>
+      </details>
+      <p class="story-sources"><a href="../paper/2521959.pdf#page=25">Read the original farmer letter</a></p>
+    </article>
+    <article class="story-chapter story-chapter--reflection" id="team-lead" aria-labelledby="team-lead-title">
+      <header>
+        <span class="story-badge story-badge--reflection">2026 AI-assisted Interpretation</span>
+        <h3 id="team-lead-title">Team-lead retrospective</h3>
+        <p>I chose this problem because I wanted to apply quantitative modeling to a meaningful sustainability question. As an engineering graduate and team leader, I wanted to connect models of ecological change with the decisions a farmer has to make about costs and production.</p>
+      </header>
+      <p>The retrospective uses the team lead’s confirmed motivation. Individual assignments and the sequence of internal discussions are undocumented.</p>
+
+      <details class="story-technical" open>
+        <summary>What I would change today</summary>
+        <ul>
+  <li>Capture each parameter with its units, source, uncertainty and reason for inclusion. Record missing values explicitly.</li>
+  <li>Archive input data, code, initial conditions, solver settings and seeds so another team can rerun the analysis.</li>
+  <li>Compare scenario predictions with field observations and test sensitivity to both parameter and model choices.</li>
+  <li>Use an AI-assisted interface to help readers find citations and inspect assumptions. Keep checks of the models and their results tied to data and reproducible tests.</li>
+</ul>
+      </details>
+    </article>
+  </div>
+</section>
+<section id="lab" class="section eco-lab" aria-labelledby="lab-title">
+  <div class="shell">
+    <span class="story-badge story-badge--demo">Illustrative Numerical Demo</span>
+    <h2 id="lab-title">Ecological Dynamics Laboratory</h2>
+    <p class="lede">Run numerical experiments with synthetic populations and synthetic simulation time. This illustrative educational model is not fitted to the 2025 paper. The original charts and their evidence remain in the Research Story.</p>
+
+    <details class="lab-panel">
+      <summary>Original 2025 mathematical definitions</summary>
+      <p>The source equations are available for inspection. The archive lacks inputs for reproducing the paper’s experimental trajectories.</p>
+      <ul class="lab-source-list">
+        <li><a href="../paper/2521959.pdf#page=9">Eq. 1, p. 9</a> · Juvenile and adult balance</li>
+        <li><a href="../paper/2521959.pdf#page=11">Eq. 7, p. 11</a> · Age-structured stochastic and delayed AED</li>
+        <li><a href="../paper/2521959.pdf#page=14">Eqs. 8–9, p. 14</a> · Four-state expansion and symbolic initialization</li>
+        <li><a href="../paper/2521959.pdf#page=15">Eqs. 10–11, p. 15</a> · Exposure loss and aggregate stability response</li>
+      </ul>
+      <p><a href="../docs/MODEL_TRACEABILITY.md">Model Traceability</a> · <a href="../docs/MODEL_IMPLEMENTATION_PLAN.md">Mathematical assumptions and implementation plan</a></p>
+    </details>
+    <noscript><p>The numerical console requires JavaScript. Its equations and original sources are available above.</p></noscript>
+    <div id="lab-console" hidden>
+      <form id="lab-form" class="lab-panel">
+        <div class="lab-toolbar">
+          <div><label for="lab-scenario">Runnable scenario</label><select id="lab-scenario"></select></div>
+          <div><label for="lab-sweep">Sensitivity parameter</label><select id="lab-sweep"></select></div>
+        </div>
+        <fieldset id="lab-parameter-group">
+          <legend>Experiment parameters</legend>
+          <div id="lab-fields" class="lab-fields"></div>
+        </fieldset>
+        <div class="lab-actions">
+          <button class="button" type="submit">Run experiment</button>
+          <button class="button lab-secondary" id="lab-reset" type="button">Restore defaults</button>
+        </div>
+      </form>
+      <p id="lab-status" role="status" aria-live="polite"></p>
+      <p id="lab-error" role="alert" hidden></p>
+      <div id="lab-results">
+        <article class="lab-panel lab-equation">
+          <h3>Equation and provenance</h3>
+          <span class="story-badge story-badge--demo" id="lab-classification"></span>
+          <p id="lab-equation"></p>
+          <p><a id="lab-citation"></a></p>
+          <p id="lab-method"></p>
+          <p id="lab-limit"></p>
+        </article>
+        <div class="lab-plots">
+          <article class="lab-panel">
+            <h3>Time series</h3>
+            <p class="lab-chart-provenance"></p>
+            <svg id="lab-time" viewBox="0 0 520 320" role="img" aria-labelledby="lab-time-title lab-time-desc"></svg>
+            <ul id="lab-legend" class="lab-legend" aria-label="Population series"></ul>
+            <p id="lab-time-summary" class="lab-caption"></p>
+          </article>
+          <article class="lab-panel">
+            <h3>Phase space</h3>
+            <p class="lab-chart-provenance"></p>
+            <svg id="lab-phase" viewBox="0 0 520 320" role="img" aria-labelledby="lab-phase-title lab-phase-desc"></svg>
+            <p id="lab-phase-summary" class="lab-caption"></p>
+          </article>
+        </div>
+        <div class="lab-plots">
+          <article class="lab-panel">
+            <h3>Interaction coefficients</h3>
+            <p id="lab-matrix-text"></p>
+            <div id="lab-matrix"></div>
+          </article>
+          <article class="lab-panel">
+            <h3>Local equilibrium</h3>
+            <p id="lab-equilibrium-summary"></p>
+            <div id="lab-jacobian"></div>
+            <p class="lab-caption">The Jacobian describes the continuous deterministic drift near a feasible interior equilibrium. It does not establish global stability, stability of the numerical update, or behavior under noise.</p>
+          </article>
+        </div>
+        <article class="lab-panel">
+          <h3>One-at-a-time sensitivity</h3>
+          <p class="lab-chart-provenance"></p>
+          <p id="lab-sensitivity-summary"></p>
+          <div id="lab-sensitivity" class="lab-table-scroll" role="region" aria-label="Sensitivity results" tabindex="0"></div>
+        </article>
+        <article class="lab-panel">
+          <h3>Experiment record</h3>
+          <p id="lab-record"></p>
+          <div class="lab-actions">
+            <button class="button lab-secondary" id="lab-json" type="button">Download JSON</button>
+            <button class="button lab-secondary" id="lab-csv" type="button">Download CSV</button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="figures" class="section"><div class="shell"><div class="kicker">03 / Figures &amp; research evidence</div><h2>Read the research behind the visuals.</h2><p class="lede">These figures come from the 2025 submission. Charts show results reported in the paper; they do not validate the illustrative simulation above. See the <a href="../docs/FIGURE_ATLAS.md">complete Figure Atlas</a> and <a href="../docs/PAPER_AUDIT.md">page audit</a> for all 15 numbered figures and the farmer letter chart.</p><div class="three">
+<article class="card"><img class="figure" src="../docs/paper-figures/fig-02.webp" alt="Flowchart links problem analysis to AED, 5D-OFE and the farm letter." loading="lazy"><h3>Quantification of Task Processes</h3><p class="evidence">Original 2025 research · <a href="../paper/2521959.pdf#page=5">Figure 2 in the paper (PDF p. 5)</a></p></article>
+<article class="card"><img class="figure" src="../docs/paper-figures/fig-05.webp" alt="Diagram branches into linear factors, four nonlinear factors and three noise types." loading="lazy"><h3>Framework of the AED Model</h3><p class="evidence">Original 2025 research · <a href="../paper/2521959.pdf#page=8">Figure 5 in the paper (PDF p. 8)</a></p></article>
+<article class="card"><img class="figure" src="../docs/paper-figures/fig-10.webp" alt="Bat and bee panels compare rising self-regulation and falling disturbance sensitivity over ten years." loading="lazy"><h3>Bats and bees: disturbance sensitivity and self-regulation</h3><p class="evidence">Original 2025 research · <a href="../paper/2521959.pdf#page=16">Figure 10 in the paper (PDF p. 16)</a></p></article>
+<article class="card"><img class="figure" src="../docs/paper-figures/fig-12.webp" alt="A two-ring chart shows aggregate and individual indicator weights." loading="lazy"><h3>Organic farm indicator weights</h3><p class="evidence">Original 2025 research · <a href="../paper/2521959.pdf#page=20">Figure 12 in the paper (PDF p. 20)</a></p></article>
+<article class="card"><img class="figure" src="../docs/paper-figures/fig-13.webp" alt="An objective-space scatter plot shows a fitted line and highlighted selection region." loading="lazy"><h3>Multiple objective fitting</h3><p class="evidence">Original 2025 research · <a href="../paper/2521959.pdf#page=22">Figure 13 in the paper (PDF p. 22)</a></p></article>
+<article class="card"><img class="figure" src="../docs/paper-figures/fig-14.webp" alt="One panel shows the sustainability score; the other shows economic benefit, income and cost projections." loading="lazy"><h3>Future sustainability and benefits of the farm</h3><p class="evidence">Original 2025 research · <a href="../paper/2521959.pdf#page=23">Figure 14 in the paper (PDF p. 23)</a></p></article>
+</div></div></section>
+<section id="evidence" class="section" aria-labelledby="evidence-title">
+  <div class="shell">
+    <h2 id="evidence-title">Original evidence and audit</h2>
+    <p class="lede">COMAP lists team 2521959 as a 2025 ICM Problem E Meritorious Winner. The completed source audit maps 29 numbered equations and 15 numbered figures plus the farmer-letter radar to the submission. Missing inputs and field observations still limit numerical reproduction and validation.</p>
+    <div class="doclinks"><a href="../paper/2521959.pdf">Original submission</a><a href="../problem/2025_ICM_Problem_E.pdf">Official Problem E</a><a href="https://www.contest.comap.com/undergraduate/contests/mcm/contests/2025/results/2025_ICM_Problem_E_Results.pdf">COMAP results · team 2521959</a><a href="../docs/PROJECT_CHARTER.md">Project Charter</a><a href="../docs/FIGURE_ATLAS.md">Figure Atlas</a><a href="../docs/PAPER_AUDIT.md">Page audit</a><a href="../docs/MODEL_TRACEABILITY.md">Model Traceability</a><a href="../docs/REUSE_RIGHTS.md">Attribution and reuse</a></div>
+  </div>
+</section>
+</main><footer class="foot"><div class="shell"><p>Team 2521959 · 2025 ICM Problem E. Codex assisted the 2026 engineering work. The portfolio runs local retrieval and numerical code.</p><p><a href="https://github.com/TYF009/MCM-2025-Problem-E-Meritorious-Winner">Source repository</a> · <a href="../docs/REUSE_RIGHTS.md">Attribution and reuse</a></p></div></footer>
+<script type="module" src="models/console.mjs"></script></body></html>
