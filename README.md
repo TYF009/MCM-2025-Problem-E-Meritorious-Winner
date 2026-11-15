@@ -106,31 +106,31 @@ The published portfolio is a static site. No account, backend, paid model API or
 
 **Requirements:** Node.js 22+ and npm. From the repository root:
 
-\`\`\`bash
+```bash
 npm ci --ignore-scripts
 npm run build
 npm run verify:dist -- --rebuild
 npm run preview
-\`\`\`
+```
 
 Open the printed local URL. The preview mirrors GitHub Pages' repository subpath and includes the original paper and rendered research documentation.
 
 Run the engineering checks:
 
-\`\`\`bash
+```bash
 npm test
 npx --no-install playwright install chromium
 npm run test:browser
-\`\`\`
+```
 
 For the source-PDF verification, also install the pinned Python dependency:
 
-\`\`\`bash
+```bash
 python -m pip install -r tools/requirements-release.txt
 python tools/verify-paper.py
-\`\`\`
+```
 
-On Linux CI, Chromium is installed using \`npx --no-install playwright install --with-deps chromium\`. Every numerical experiment can export its solver settings, provenance, seed where applicable, and computed results as JSON or CSV.
+On Linux CI, Chromium is installed using `npx --no-install playwright install --with-deps chromium`. Every numerical experiment can export its solver settings, provenance, seed where applicable, and computed results as JSON or CSV.
 
 **Explore the implementation:** [Simulation engine](site/models/engine.mjs) · [Scenario comparisons](site/decision/scenarios.mjs) · [Decision mathematics](site/decision/methods.mjs) · [Citation retrieval](site/companion/retrieval.mjs) · [CI workflow](.github/workflows/portfolio-smoke.yml) · [Release checklist](docs/RELEASE_CHECKLIST.md)
 
