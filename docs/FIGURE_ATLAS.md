@@ -1,26 +1,32 @@
-# Figure Atlas — source audit pending
+# Figure Atlas
 
-The submitted paper (`paper/2521959.pdf`) has not yet been fully machine-audited in this redevelopment. **Do not assign PDF page numbers or figure numbers beyond the file names until verified against the PDF.**
+Source: [submitted 2025 paper](../paper/2521959.pdf), team 2521959, Git blob `81363596b882ebf3188bf2f75b49012a2d4237da`. Codex checked the numbered captions, page placements and unnumbered letter chart against rendered pages on 2026-11-15. Page numbers are 1-based PDF pages. Captions retain the paper's wording, with spacing restored. See [equations, parameters and limitations](MODEL_TRACEABILITY.md).
 
-| Existing repository asset | Proposed interactive artifact | Origin / status | Paper location |
-| --- | --- | --- | --- |
-| `figures/Fig2_Workflow.png` | Clickable research pipeline | Existing image, source pending cross-check | To verify |
-| `figures/Fig5_AED_Framework.png` | Interactive equation explainer | Existing image, source pending cross-check | To verify |
-| `figures/Fig10_Beneficial_Insects.png` | Species interventions and food-web diagram | Existing image, source pending cross-check | To verify |
-| `figures/Fig14_15Years_Forecast.png` | Original-vs-reconstructed time-series | Existing image, source pending cross-check | To verify |
-| `figures/aed_simulation_result.png` | Numerical time-series comparison | Code-generated image, provenance unverified | Not a paper claim |
-| `figures/matlab_phase_portrait.png` | Stability and phase space viewer | Code-generated image, provenance unverified | Not a paper claim |
-| `figures/hybrid_weighting_result.png` | Weight explorer | Code-generated image, provenance unverified | Not a paper claim |
-| `figures/pareto_topsis_result.png` | Trade-off decision viewer | Code-generated image, provenance unverified | Not a paper claim |
-| `figures/certificate.png` | Award evidence | Certificate image; verify details from source | N/A |
+All entries are **Original 2025 research** as published content. The linked WebP files are post-contest display copies extracted from the embedded artwork, with no chart redrawing or data changes. The [asset index](paper-figures/index.json) records page, source object (xref), extent in PDF points measured from the top left, native dimensions, and display-file SHA-256. Each artwork is a single embedded raster; no page crop was needed. For full-resolution artwork, use `python tools/extract_paper_figures.py --native <output-directory>` with PyMuPDF and Pillow. Use the PDF for captions, context and close reading.
 
-## Required fields for each eventual figure record
-`id`, `original_title`, `paper_pdf_page`, `original_figure_number`, `source_asset`, `caption`, `research_question`, `associated_equations`, `parameter_source`, `classification`, `verified_by`, `verified_on`.
+| Figure | Caption as printed | Source | Visual description | Research question and evidence |
+| --- | --- | --- | --- | --- |
+| [Fig. 1](paper-figures/fig-01.webp) | The Shift: Forest to Farmland | [p. 3](../paper/2521959.pdf#page=3) | A three-part landscape transitions from forest to farm. | §1.1; context illustration; image creator not credited. |
+| [Fig. 2](paper-figures/fig-02.webp) | Quantification of Task Processes | [p. 5](../paper/2521959.pdf#page=5) | Flowchart links problem analysis to AED, 5D-OFE and the farm letter. | §1.4; workflow overview; headline values remain reported claims. |
+| [Fig. 3](paper-figures/fig-03.webp) | The Food Web | [p. 6](../paper/2521959.pdf#page=6) | Arrows connect crops, herbivores, secondary consumers and decomposers. | §4.1; conceptual energy and nutrient pathways. |
+| [Fig. 4](paper-figures/fig-04.webp) | The Data Distribution in Australia | [p. 7](../paper/2521959.pdf#page=7) | Five Australia maps show temperature, nitrate, vegetation water, particulates and sulfur dioxide. | §4.2 and Table 2; map layers and preprocessing are not archived. |
+| [Fig. 5](paper-figures/fig-05.webp) | Framework of the AED Model | [p. 8](../paper/2521959.pdf#page=8) | Diagram branches into linear factors, four nonlinear factors and three noise types. | §5.1–5.2; Eq. 1–7; conceptual, no runnable parameter set. |
+| [Fig. 6](paper-figures/fig-06.webp) | Changes in Population Quantity in the Forest-Farmland System | [p. 12](../paper/2521959.pdf#page=12) | Stacked line charts show producer and consumer species counts by quarter around conversion. | §5.3.1; AED context; raw counts, observation protocol and figure input are unavailable. |
+| [Fig. 7](paper-figures/fig-07.webp) | Changes in Periodic Energy Levels | [p. 13](../paper/2521959.pdf#page=13) | Four overlapping energy curves span growing, harvesting, decomposition, plowing and sowing. | §5.3.2; FPI, six levels; no physical energy units or level thresholds documented. |
+| [Fig. 8](paper-figures/fig-08.webp) | Density Iteration of Native Organisms | [p. 14](../paper/2521959.pdf#page=14) | Snail and dandelion density points are shown across months. | §5.4; Eq. 8–9; one-month steps for 24 months; no numeric initial conditions. |
+| [Fig. 9](paper-figures/fig-09.webp) | Impact on Ecological Indicators after Pesticide Removal | [p. 15](../paper/2521959.pdf#page=15) | Bars show six ecological indicators after pesticide removal over time. | §5.5.1; Eq. 10; intervention schedule and input series unavailable. |
+| [Fig. 10](paper-figures/fig-10.webp) | Comparison of Indicators after the Introduction of Beneficial Insects | [p. 16](../paper/2521959.pdf#page=16) | Bat and bee panels compare rising self-regulation and falling disturbance sensitivity over ten years. | §5.5.2; Eq. 11; bats are mammals; bandwidth/interval construction and calibration unavailable. |
+| [Fig. 11](paper-figures/fig-11.webp) | Indicators selected | [p. 17](../paper/2521959.pdf#page=17) | Table maps ten indicators to the five organic farming dimensions. | §6.1.1; Eq. 12–18 quantify selected indicators. |
+| [Fig. 12](paper-figures/fig-12.webp) | Future sustainability and benefits of the farm | [p. 20](../paper/2521959.pdf#page=20) | A two-ring chart shows aggregate and individual indicator weights. | §6.1.2–6.1.3; Eq. 19–23; caption shared with Fig. 14 although this is a weight chart. |
+| [Fig. 13](paper-figures/fig-13.webp) | Multiple objective fitting | [p. 22](../paper/2521959.pdf#page=22) | An objective-space scatter plot shows a fitted line and highlighted selection region. | §6.2.1; Eq. 24–25, 27–29; no candidate population or TOPSIS settings archived. |
+| [Fig. 14](paper-figures/fig-14.webp) | Future sustainability and benefits of the farm | [p. 23](../paper/2521959.pdf#page=23) | One panel shows the sustainability score; the other shows economic benefit, income and cost projections. | §6.1.4, 6.2.2; Eq. 26; 15-year scenario projection; fitted model/training series unavailable. |
+| [Fig. 15](paper-figures/fig-15.webp) | Sensitivity Analysis | [p. 23](../paper/2521959.pdf#page=23) | Two groups of violin plots compare distributions of linear and nonlinear sensitivity indices. | §7; 10% perturbations; sensitivity metric, sampling and raw results unavailable. |
+| [Letter radar](paper-figures/letter-radar.webp) | None | [p. 25](../paper/2521959.pdf#page=25) | Unnumbered radar chart in the Milkwood farmer letter. | Farmer letter; chart inputs and baseline calculation unavailable. |
 
-## Extraction instructions
-Use a PDF tool to inspect every rendered page. Prefer native images at original resolution; use high-DPI page cropping for vector illustrations. Retain uncropped originals and record extraction coordinates if crops are made. Verify against the PDF screenshots. Never infer numbers from unreadable graphs.
+The unnumbered letter also contains a banner photograph and a decorative background (p. 25); those are not research charts. The two formal tables on pp. 5 and 7 are indexed in the [page audit](PAPER_AUDIT.md).
 
-## Source links
-- [Original paper](../paper/2521959.pdf)
-- [Official problem](../problem/2025_ICM_Problem_E.pdf)
-- [Existing figures](../figures/)
+## Rights and historical files
+
+Attribution: team 2521959, 2025 ICM Problem E submission. Publication in the PDF verifies placement and content, not authorship or a reuse license for individual images. In particular, the landscape illustration, food-web artwork, maps and letter art have no verified standalone reuse permission; retain attribution and check rights before reuse beyond this repository. The [official problem PDF](../problem/2025_ICM_Problem_E.pdf) carries COMAP's copyright notice.
+
+The original directories are preserved. The historical `Fig2_Workflow.png`, `Fig5_AED_Framework.png`, `Fig10_Beneficial_Insects.png` and `Fig14_15Years_Forecast.png` visually correspond to paper Figs. 2, 5, 10 and 14; the portfolio points to the audited PDF objects for definitive provenance. See [the source audit](PAPER_AUDIT.md#repository-evidence) for the other historical assets.
