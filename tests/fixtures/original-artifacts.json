@@ -1,0 +1,21 @@
+{
+  "main": "ecc0484dcf027f04552eef6b5feb62401bc64b80",
+  "files": {
+    "figures/2521959.pdf": "c3fb3b68bfd3719dc7f72feeb4efcae4f528a91e",
+    "figures/Fig10_Beneficial_Insects.png": "96b168ce78772453a6d71cf109e476394b59e3a7",
+    "figures/Fig14_15Years_Forecast.png": "c9b94731b26d58224f162a3668009d4b4c56b750",
+    "figures/Fig2_Workflow.png": "7dcebfcf83af29fe9c4acb2fcf5d69d40a97c211",
+    "figures/Fig5_AED_Framework.png": "eeabb3f0cc5fec42fd41429b6ffb1859ebb231ef",
+    "figures/aed_simulation_result.png": "e2cd23e2e11e80e041102d6b3a63e55a63d1a061",
+    "figures/certificate.png": "db3e9b307875b4d88248f1362053760d70c0b678",
+    "figures/hybrid_weighting_result.png": "a28ab8ea690f3eae12ae31b4afc78ff1366208fb",
+    "figures/matlab_phase_portrait.png": "29e8e59c53b2d02e52d82b43819678df48e61449",
+    "figures/pareto_topsis_result.png": "7b97d9f17fce302359f9119a582756e51f906ecb",
+    "paper/2521959.pdf": "81363596b882ebf3188bf2f75b49012a2d4237da",
+    "problem/2025_ICM_Problem_E.pdf": "bc568be59982b6e8d466f9e87ef9edf0b8e568b9",
+    "src/hybrid_weighting.py": "279bd603f2b55f5ca3782b9792b5f27e643f2d16",
+    "src/multi_objective_opt.py": "23f8688d36e233115899aa0034f1d22f659a6d1c",
+    "src/srcaed_simulator.py": "82669737d4d7db053274af59fd1fb8088942c671",
+    "src/srcmatlabaed_sensitivity_analysis.m": "3830a4df39177a2de5032ce4f403d8061e8b07cb"
+  }
+}

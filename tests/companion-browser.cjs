@@ -1,26 +1,10 @@
 const { chromium } = require('playwright');
 const assert = require('node:assert/strict');
 const fs = require('node:fs/promises');
-const { createReadStream } = require('node:fs');
-const http = require('node:http');
+const { startPreview } = require('../scripts/preview-server.cjs');
 const path = require('node:path');
 
-const root = path.resolve(__dirname, '..');
 const screenshots = process.argv[2] && path.resolve(process.argv[2]);
-const types = { '.html': 'text/html; charset=utf-8', '.mjs': 'text/javascript', '.css': 'text/css',
-  '.json': 'application/json', '.webp': 'image/webp', '.pdf': 'application/pdf' };
-
-const server = http.createServer(async (request, response) => {
-  const url = new URL(request.url, 'http://localhost');
-  const pathname = url.pathname.endsWith('/') ? url.pathname + 'index.html' : url.pathname;
-  const file = path.resolve(root, '.' + pathname);
-  if (!file.startsWith(root + path.sep)) return response.writeHead(404).end();
-  const stat = await fs.stat(file).catch(() => null);
-  if (!stat?.isFile()) return response.writeHead(404).end();
-  response.writeHead(200, { 'Content-Type': types[path.extname(file)] || 'application/octet-stream' });
-  if (request.method === 'HEAD') response.end();
-  else createReadStream(file).pipe(response);
-});
 
 async function download(page, name) {
   const [artifact] = await Promise.all([
@@ -121,6 +105,9 @@ async function exercise(browser, base, layout, viewport) {
     assert.ok(requests.every(url => url.startsWith(new URL(base).origin) || url.startsWith('blob:')), requests.join('\n'));
     assert.deepEqual(errors, []);
     console.log(layout + ': citations, injection cases, review gate, approved export and all challenge exports passed');
+  } catch (error) {
+    if (screenshots) await page.screenshot({ path: path.join(screenshots, 'failure-companion-' + layout + '.png') }).catch(() => {});
+    throw error;
   } finally { await page.close(); }
 }
 
@@ -139,11 +126,11 @@ async function withoutJavaScript(browser, base) {
 
 async function main() {
   if (screenshots) await fs.mkdir(screenshots, { recursive: true });
-  await new Promise((resolve, reject) => server.once('error', reject).listen(0, '127.0.0.1', resolve));
+  const { server, base } = await startPreview();
   let browser;
   try {
     browser = await chromium.launch({ executablePath: process.env.CHROME_BIN, headless: true });
-    const url = 'http://127.0.0.1:' + server.address().port + '/site/companion/';
+    const url = base + 'site/companion/';
     await withoutJavaScript(browser, url);
     await exercise(browser, url, 'desktop', { width: 1280, height: 940 });
     await exercise(browser, url, 'mobile', { width: 390, height: 844 });
