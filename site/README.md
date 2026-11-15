@@ -22,6 +22,7 @@ Alternatively use `npx serve .` from repository root.
 - Ecological Dynamics Laboratory with a seeded three-population example and an illustrative Eq. 10 exposure withdrawal model. See the [implementation plan](../docs/MODEL_IMPLEMENTATION_PLAN.md).
 - Time series, phase projection, interaction coefficients, deterministic local equilibrium checks, one-at-a-time sensitivity and JSON/CSV downloads.
 - [Decision Studio](decision/) compares three controlled Eq. 10 scenarios, shows preference-sensitive decision rankings, and exports an auditable brief. See the [studio specification](../docs/DECISION_STUDIO_SPEC.md).
+- [Research Companion](companion/) provides offline evidence retrieval, reviewed scenario drafts and three computed model challenges. [Runtime architecture and privacy](../docs/AI_RESEARCH_ASSISTANT_SPEC.md).
 - Paper and documentation access; no API keys required.
 
 ## What does NOT work yet
