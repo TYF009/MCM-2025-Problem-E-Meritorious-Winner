@@ -19,13 +19,13 @@ Alternatively use `npx serve .` from repository root.
 ## What works now
 - Responsive research landing page, original paper and figure links.
 - Seven research chapters with original figures, Paper and Interpretation views, decision trails and a team-lead retrospective. See the [storyboard](../docs/RESEARCH_STORYBOARD.md).
-- Synthetic three-species stochastic dynamical experiment with interactive growth, interaction, noise and random seed.
-- Seeded random generator for repeatable outputs, an accessible SVG time-series plot and text-only final state readings.
+- Ecological Dynamics Laboratory with a seeded three-population example and an illustrative Eq. 10 exposure withdrawal model. See the [implementation plan](../docs/MODEL_IMPLEMENTATION_PLAN.md).
+- Time series, phase projection, interaction coefficients, deterministic local equilibrium checks, one-at-a-time sensitivity and JSON/CSV downloads.
 - Paper and documentation access; no API keys required.
 
 ## What does NOT work yet
 - This model is not validated against the competition submission, nor is it a field measurement.
-- No calibrated 15-year forecast, organic farming what-if comparisons or verified Pareto decision model.
+- No calibrated 15-year forecast or verified Pareto decision model. The Eq. 10 case explores the original equation form with synthetic inputs.
 - Full model reproduction awaits calibrated source inputs; see the [paper audit](../docs/PAPER_AUDIT.md) and [Figure Atlas](../docs/FIGURE_ATLAS.md).
 - GitHub Pages publishing is not yet configured.
 
