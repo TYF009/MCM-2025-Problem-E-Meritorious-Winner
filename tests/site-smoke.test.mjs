@@ -78,3 +78,61 @@ test('atlas assets match the published index and site cards link to their source
     assert.ok(card.includes('../paper/2521959.pdf#page=' + record.pdf_page + '"'));
   }
 });
+
+const story = html.match(/<section id="research"[\s\S]+?<\/section>/)[0];
+const chapterIds = ['why', 'workflow', 'ecosystem', 'interventions', 'trade-offs', 'farmer-letter', 'team-lead'];
+
+test('research chapters provide navigable evidence and technical disclosures', () => {
+  const chapters = [...story.matchAll(/<article class="story-chapter[^"]*" id="([^"]+)"[\s\S]*?<\/article>/g)];
+  assert.deepEqual(chapters.map(([, id]) => id), chapterIds);
+  for (const [chapter, id] of chapters) {
+    assert.ok(story.includes(`href="#${id}"`), id);
+    assert.ok(chapter.includes('class="story-technical"'), id);
+    if (id !== 'team-lead') assert.match(chapter, /2521959\.pdf#page=[1-9]\d*/);
+  }
+  const trails = [...story.matchAll(/<details class="story-trail"[\s\S]*?<\/details>/g)];
+  assert.ok(trails.length >= 4);
+  for (const [trail] of trails) {
+    for (const stage of ['Question', 'Model / assumption', 'Paper evidence', 'Reported finding', 'Open limitation']) {
+      assert.ok(trail.includes(`<dt>${stage}</dt>`), stage);
+    }
+    assert.match(trail, /2521959\.pdf#page=[1-9]\d*/);
+  }
+  for (const [, href, page] of story.matchAll(/href="(\.\.\/[^"#]+\.pdf)#page=(\d+)"/g)) {
+    assert.ok(fs.existsSync(new URL(href, new URL('../site/', import.meta.url))), href);
+    const lastPage = href.includes('/problem/') ? 4 : 25;
+    assert.ok(Number(page) >= 1 && Number(page) <= lastPage, href + '#' + page);
+  }
+  for (const page of [1, 2]) assert.ok(story.includes(`../problem/2025_ICM_Problem_E.pdf#page=${page}`));
+});
+
+test('research figures link to their indexed PDF pages and preserve provenance', () => {
+  const base = new URL('../docs/paper-figures/', import.meta.url);
+  const records = JSON.parse(fs.readFileSync(new URL('index.json', base), 'utf8'));
+  const cards = [...story.matchAll(/<figure class="story-figure">([\s\S]+?)<\/figure>/g)];
+  const seen = new Set();
+  for (const [, card] of cards) {
+    const file = card.match(/src="\.\.\/docs\/paper-figures\/([^"]+)"/)?.[1];
+    const record = records.find(entry => entry.file === file);
+    assert.ok(record, file);
+    assert.ok(fs.existsSync(new URL(file, base)));
+    assert.ok(!seen.has(file), 'unexpected duplicate: ' + file);
+    seen.add(file);
+    const source = `../paper/2521959.pdf#page=${record.pdf_page}`;
+    const label = record.id === 'letter-radar' ? 'Unnumbered radar chart' : `Figure ${Number(record.id.slice(4))}`;
+    assert.match(card, /alt="[^"]{15,}"/);
+    assert.ok(card.includes('2025 Contest Research'));
+    assert.equal(card.split(source).length, 3, 'image and caption link to ' + source);
+    assert.ok(card.includes(`${label} · PDF p. ${record.pdf_page}`));
+  }
+  assert.deepEqual([...seen], records.filter(entry => entry.id !== 'fig-04').map(entry => entry.file));
+});
+
+test('reading views and the model console have distinct provenance', () => {
+  for (const label of ['Paper View', 'Interpretation View', '2025 Contest Research', '2026 AI-assisted Portfolio Reconstruction', 'Illustrative Numerical Demo']) {
+    assert.ok(story.includes(label), label);
+  }
+  const lab = html.match(/<section id="lab"[\s\S]*?<\/section>/)[0];
+  assert.ok(lab.includes('Illustrative Numerical Demo'));
+  assert.match(lab, /not fitted to the 2025 paper/);
+});
