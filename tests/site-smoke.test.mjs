@@ -2,13 +2,14 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
+import { createHash } from 'node:crypto';
 
 const html = fs.readFileSync(new URL('../site/index.html', import.meta.url), 'utf8');
 test('site contains required portfolio and provenance elements', () => {
   for (const marker of ['Original Paper','illustrative educational model','Source','2025 ICM','2026+','Model Traceability','Environmental noise']) {
     assert.ok(html.toLowerCase().includes(marker.toLowerCase()), 'missing: ' + marker);
   }
-  for (const file of ['../paper/2521959.pdf', '../figures/Fig2_Workflow.png', '../figures/Fig14_15Years_Forecast.png','../docs/PROJECT_CHARTER.md']) {
+  for (const file of ['../paper/2521959.pdf', '../docs/FIGURE_ATLAS.md', '../docs/PAPER_AUDIT.md','../docs/PROJECT_CHARTER.md']) {
     assert.ok(html.includes(file), 'missing: ' + file);
   }
 });
@@ -48,4 +49,32 @@ test('reset restores initial parameters', () => {
   get('noise').value='0.13';
   get('reset').listeners.click();
   assert.equal(Number(get('noise').value),0.03);
+});
+
+test('atlas assets match the published index and site cards link to their source pages', () => {
+  const base = new URL('../docs/paper-figures/', import.meta.url);
+  const index = JSON.parse(fs.readFileSync(new URL('index.json', base), 'utf8'));
+  const atlas = fs.readFileSync(new URL('../docs/FIGURE_ATLAS.md', import.meta.url), 'utf8');
+  const expected = Array.from({ length: 15 }, (_, i) => 'fig-' + String(i + 1).padStart(2, '0'));
+  expected.push('letter-radar');
+  assert.deepEqual(index.map(item => item.id), expected);
+
+  for (const record of index) {
+    const bytes = fs.readFileSync(new URL(record.file, base));
+    assert.equal(bytes.subarray(8, 12).toString(), 'WEBP', record.id);
+    assert.equal(createHash('sha256').update(bytes).digest('hex'), record.sha256, record.id);
+    const row = atlas.split('\n').find(line => line.includes('paper-figures/' + record.file + ')'));
+    assert.ok(row?.includes('2521959.pdf#page=' + record.pdf_page + ')'), record.id);
+  }
+  const figures = html.match(/<section id="figures"[\s\S]+?<\/section>/)[0];
+  const cards = [...figures.matchAll(/<article class="card">([\s\S]+?)<\/article>/g)];
+  assert.equal(cards.length, 6);
+  for (const [, card] of cards) {
+    const file = card.match(/src="\.\.\/docs\/paper-figures\/([^"]+)"/)?.[1];
+    const record = index.find(item => item.file === file);
+    assert.ok(record, file);
+    assert.match(card, /alt="[^"]{15,}"/);
+    assert.ok(card.includes('Original 2025 research'));
+    assert.ok(card.includes('../paper/2521959.pdf#page=' + record.pdf_page + '"'));
+  }
 });
