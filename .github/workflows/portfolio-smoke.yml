@@ -6,12 +6,14 @@ on:
       - 'site/**'
       - 'tests/**'
       - 'docs/MODEL_IMPLEMENTATION_PLAN.md'
+      - 'docs/DECISION_STUDIO_SPEC.md'
       - '.github/workflows/portfolio-smoke.yml'
   pull_request:
     paths:
       - 'site/**'
       - 'tests/**'
       - 'docs/MODEL_IMPLEMENTATION_PLAN.md'
+      - 'docs/DECISION_STUDIO_SPEC.md'
       - '.github/workflows/portfolio-smoke.yml'
 
 jobs:
@@ -22,5 +24,5 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Smoke test (no third-party dependencies)
-        run: node --test tests/site-smoke.test.mjs tests/ecology-engine.test.mjs
+      - name: Numerical and portfolio tests
+        run: node --test

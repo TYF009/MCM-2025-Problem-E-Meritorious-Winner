@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Decision Studio | The Verdant Metamorphosis</title>
+  <link rel="stylesheet" href="studio.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to Decision Studio</a>
+  <header class="mast">
+    <div class="shell">
+      <a class="brand" href="../">The Verdant Metamorphosis</a>
+      <nav aria-label="Portfolio"><a href="../#research">Research Story</a><a href="../#lab">Ecological Dynamics Lab</a></nav>
+    </div>
+  </header>
+  <main id="main" tabindex="-1">
+    <section class="intro">
+      <div class="shell">
+        <span class="badge">Post-contest modeling extension</span>
+        <h1>Agricultural Decision Studio</h1>
+        <p>Compare synthetic exposure policies on the same numerical grid. Then see how different priorities affect the ranking.</p>
+        <nav class="jump" aria-label="Studio sections">
+          <a href="#scenarios">What-if experiments</a><a href="#preferences">Decision methods</a><a href="#brief">Decision brief</a>
+        </nav>
+      </div>
+    </section>
+    <div class="shell content">
+      <section id="scenarios" aria-labelledby="scenarios-title">
+        <h2 id="scenarios-title">Controlled what-if experiments</h2>
+        <p><span class="badge structural">Structural reconstruction with illustrative parameters</span></p>
+        <p>The submitted paper models broader pesticide withdrawal. The official prompt specifically asks about herbicide removal. Here C(t) is a synthetic aggregate exposure index with no mapping to a measured chemical dose.</p>
+        <p class="references"><a href="../../paper/2521959.pdf#page=15">Paper Eq. 10 · p. 15</a> <a href="../../problem/2025_ICM_Problem_E.pdf#page=2">Official problem · p. 2</a></p>
+        <noscript><p>Enable JavaScript to run the experiments. The original sources remain available above.</p></noscript>
+        <div id="studio" hidden>
+          <form id="scenario-form" class="panel no-print">
+            <fieldset>
+              <legend>Shared settings</legend>
+              <div class="inputs">
+                <label>Producer growth <small>Per synthetic time unit</small><input name="growth" type="number" min=".2" max="1.2" step=".01" required></label>
+                <label>Solver timestep <small>Synthetic time</small><select name="dt"><option>0.0125</option><option>0.025</option><option>0.05</option><option>0.1</option></select></label>
+                <label>Simulation horizon <small>Synthetic time</small><input name="horizon" type="number" min="10" max="60" step="1" required></label>
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend>Exposure schedules</legend>
+              <div class="inputs">
+                <label>Baseline / early intensity <small>Synthetic exposure index, 0–1</small><input name="exposure" type="number" min="0" max="1" step=".01" required></label>
+                <label>Early withdrawal <small>Synthetic time</small><input name="early" type="number" min="0" max="60" step="1" required></label>
+                <label>Late withdrawal <small>Synthetic time</small><input name="late" type="number" min="0" max="60" step="1" required></label>
+                <label>Late intensity <small>Synthetic exposure index, 0–1</small><input name="lateExposure" type="number" min="0" max="1" step=".01" required></label>
+              </div>
+              <p class="hint">Use equal intensities to compare timing alone. Set a switch at the horizon to keep exposure active throughout the simulated interval.</p>
+            </fieldset>
+            <div class="actions"><button type="submit">Run controlled comparison</button><button type="button" class="secondary" id="scenario-reset">Restore scenario defaults</button></div>
+          </form>
+          <p id="scenario-status" role="status"></p><p id="scenario-error" role="alert" class="error" hidden></p>
+          <div id="scenario-results">
+            <div id="scenario-cards" class="arm-cards"></div>
+            <figure class="panel">
+              <figcaption><strong>Population trajectories</strong><br><span class="badge structural">Structural reconstruction with illustrative parameters</span></figcaption>
+              <ul id="legend" class="legend" aria-label="Scenario line styles"></ul>
+              <div class="charts">
+                <svg id="producer-plot" viewBox="0 0 420 255" role="img" aria-labelledby="producer-plot-title producer-plot-desc"></svg>
+                <svg id="consumer-plot" viewBox="0 0 420 255" role="img" aria-labelledby="consumer-plot-title consumer-plot-desc"></svg>
+              </div>
+              <p class="hint">The table gives endpoints and time integrals. The CSV and JSON contain every displayed sample.</p>
+            </figure>
+            <div id="pairwise" class="scroll panel" tabindex="0" role="region" aria-label="Paired scenario metrics"></div>
+            <details id="fixed-details" class="panel" open>
+              <summary>Fixed inputs, equation and solver</summary>
+              <p id="fixed-equation" class="equation"></p><p id="fixed-settings"></p>
+              <p>Trapezoidal population integrals use the output samples. Cumulative exposure equals intensity × active duration. All times and states are synthetic.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+      <section id="preferences" aria-labelledby="preferences-title">
+        <h2 id="preferences-title">Illustrative Decision Studio</h2>
+        <p><span class="badge synthetic">Synthetic criteria and preferences</span></p>
+        <p>The option matrix comes from the three computed arms. Higher integrated producer and consumer indices are chosen benefits for this exercise. Lower cumulative exposure and shorter time under a changed policy are chosen costs. These preferences can compete.</p>
+        <div id="methods-ui" hidden>
+          <form id="judgment-form" class="panel no-print">
+            <fieldset><legend>AHP pairwise priorities</legend><p>A ratio of 1 gives equal priority. A value above 1 favors the first criterion. A value below 1 favors the second. Enter a decimal between 1/9 and 9.</p>
+              <div class="inputs" id="judgment-fields"></div>
+            </fieldset>
+            <div class="actions"><button type="submit">Update preferences</button><button type="button" class="secondary" id="judgment-reset">Equal pairwise priorities</button></div>
+          </form>
+          <p id="judgment-status" role="status"></p><p id="judgment-error" role="alert" class="error" hidden></p>
+          <div id="decision-results">
+            <div class="panel scroll" id="matrix" tabindex="0" role="region" aria-label="Raw decision matrix"></div>
+            <details class="panel" open>
+              <summary>Normalization and calculated weights</summary>
+              <p>Min–max scaling puts benefits and reversed costs on [0, 1], with higher values preferred. A benefit uses (x − min)/(max − min), a cost uses (max − x)/(max − min), and a constant column becomes zero. The hybrid is the equal arithmetic mean of AHP, EWM and CRITIC.</p>
+              <div class="scroll" id="normalized" tabindex="0" role="region" aria-label="Oriented matrix"></div>
+              <div class="scroll" id="weights" tabindex="0" role="region" aria-label="Calculated weights"></div>
+              <p id="consistency"></p><p id="fallbacks" class="hint"></p>
+            </details>
+            <details class="panel">
+              <summary>AHP, EWM and CRITIC calculations</summary>
+              <div class="scroll" id="ratios" tabindex="0" role="region" aria-label="AHP reciprocal matrix"></div>
+              <p>AHP normalizes row geometric means. The consistency ratio uses the mean of (Aw)ᵢ/wᵢ to estimate λmax and compares the resulting index with a random index. A value at or above 0.10 flags judgments to review.</p>
+              <p>EWM uses pᵢ = zᵢ/Σz and normalizes information 1 − entropy. It uses 0 log 0 = 0. Constant columns contribute zero information. When all information is zero, the weights are uniform.</p>
+              <p>CRITIC multiplies each standard deviation by summed Pearson conflict (1 − correlation). Constant columns are excluded. If no conflict remains, it uses relative spread, or uniform weights if every column is constant.</p>
+            </details>
+            <article class="panel">
+              <h3>TOPSIS and preference change</h3>
+              <p>TOPSIS measures distance to the best and worst weighted oriented values. Closeness is distance from worst divided by the sum of both distances. Identical scores share a rank. The second preference doubles the cumulative exposure weight before renormalizing.</p>
+              <p id="rank-summary" aria-live="polite"></p>
+              <div id="rankings" class="scroll" tabindex="0" role="region" aria-label="TOPSIS rankings"></div>
+            </article>
+            <article class="panel">
+              <h3>Pareto Explorer</h3>
+              <p><span class="badge synthetic">Finite set · three synthetic candidates</span></p>
+              <p>A candidate is dominated if another is at least as good on every criterion and strictly better on one. The chart projects the four-criterion result onto cumulative exposure and changed-policy duration.</p>
+              <div class="pareto-layout">
+                <svg id="pareto-plot" viewBox="0 0 420 255" role="img" aria-labelledby="pareto-plot-title pareto-plot-desc"></svg>
+                <div id="pareto-table"></div>
+              </div>
+            </article>
+          </div>
+        </div>
+        <details class="panel historical">
+          <summary>Original 2025 research · reported weighting vectors</summary>
+          <p>These five-entry vectors are listed in the paper’s printed order. They belong to the paper’s indicator system and do not enter studio rankings.</p>
+          <ul><li>AHP · 0.2401, 0.1125, 0.2712, 0.2297, 0.1465</li>
+          <li>EWM · 0.2109, 0.1499, 0.2400, 0.2798, 0.1194</li>
+          <li>CRITIC · 0.2901, 0.1403, 0.2403, 0.2307, 0.0996</li></ul>
+          <p class="references"><a href="../../paper/2521959.pdf#page=17">Indicators · p. 17</a> <a href="../../paper/2521959.pdf#page=19">Weights · p. 19</a> <a href="../../paper/2521959.pdf#page=20">CRITIC · p. 20</a> <a href="../../paper/2521959.pdf#page=21">Objectives · p. 21</a> <a href="../../paper/2521959.pdf#page=22">Milkwood case · p. 22</a></p>
+        </details>
+      </section>
+      <section id="brief" class="panel brief" aria-labelledby="brief-title">
+        <h2 id="brief-title">Scenario Decision Brief</h2>
+        <p><span class="badge synthetic">Post-contest illustrative decision analysis</span></p>
+        <p id="brief-summary"></p>
+        <h3>Evidence gaps</h3>
+        <ul><li>Field observations and calibrated chemical, ecological and economic mappings are unavailable.</li><li>The archive lacks fitted parameters and the historical candidate population. The rankings depend on the chosen synthetic metrics and weights.</li></ul>
+        <h3>Paper’s reported 2025 recommendations</h3>
+        <p>The original farmer letter proposed restoration areas and nitrogen-fixing plants, measures such as protective nets and habitat for natural pest enemies, and revenue diversification through tourism and education. The paper reports these as proposals for the Milkwood case. The study lacks independent field validation.</p>
+        <p class="references"><a href="../../paper/2521959.pdf#page=25">Original farmer letter · p. 25</a> <a href="../../docs/DECISION_STUDIO_SPEC.md">Methods, assumptions and test commands</a></p>
+        <div class="actions no-print" id="brief-actions" hidden>
+          <button id="brief-print" type="button">Print decision brief</button>
+          <button id="brief-json" type="button" class="secondary">Download brief JSON</button>
+          <button id="scenario-csv" type="button" class="secondary">Download scenario CSV</button>
+        </div>
+        <p id="export-status" role="status"></p>
+      </section>
+    </div>
+  </main>
+  <script type="module" src="studio.mjs"></script>
+</body>
+</html>
