@@ -7,6 +7,8 @@ on:
       - 'tests/**'
       - 'docs/MODEL_IMPLEMENTATION_PLAN.md'
       - 'docs/DECISION_STUDIO_SPEC.md'
+      - 'docs/AI_RESEARCH_ASSISTANT_SPEC.md'
+      - 'docs/AI_EVALUATION.md'
       - '.github/workflows/portfolio-smoke.yml'
   pull_request:
     paths:
@@ -14,6 +16,8 @@ on:
       - 'tests/**'
       - 'docs/MODEL_IMPLEMENTATION_PLAN.md'
       - 'docs/DECISION_STUDIO_SPEC.md'
+      - 'docs/AI_RESEARCH_ASSISTANT_SPEC.md'
+      - 'docs/AI_EVALUATION.md'
       - '.github/workflows/portfolio-smoke.yml'
 
 jobs:
