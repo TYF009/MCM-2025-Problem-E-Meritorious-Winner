@@ -5,7 +5,7 @@ import { createHash } from 'node:crypto';
 
 const html = fs.readFileSync(new URL('../site/index.html', import.meta.url), 'utf8');
 test('site contains required portfolio and provenance elements', () => {
-  for (const marker of ['Original Paper','illustrative educational model','Source','2025 ICM','2026+','Model Traceability','Synthetic simulation time']) {
+  for (const marker of ['Original Paper','illustrative educational model','Source','2025 ICM','2026 portfolio','Model Traceability','Synthetic simulation time']) {
     assert.ok(html.toLowerCase().includes(marker.toLowerCase()), 'missing: ' + marker);
   }
   for (const file of ['../paper/2521959.pdf', '../docs/FIGURE_ATLAS.md', '../docs/PAPER_AUDIT.md','../docs/PROJECT_CHARTER.md']) {
@@ -100,7 +100,7 @@ test('research figures link to their indexed PDF pages and preserve provenance',
 });
 
 test('reading views and the model console have distinct provenance', () => {
-  for (const label of ['Paper View', 'Interpretation View', '2025 Contest Research', '2026 AI-assisted Portfolio Reconstruction', 'Illustrative Numerical Demo']) {
+  for (const label of ['Paper View', 'Interpretation View', '2025 Contest Research', '2026 AI-assisted Interpretation', 'Illustrative Numerical Demo']) {
     assert.ok(story.includes(label), label);
   }
   const lab = html.match(/<section id="lab"[\s\S]*?<\/section>/)[0];

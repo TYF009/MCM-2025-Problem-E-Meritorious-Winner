@@ -1,0 +1,62 @@
+name: deploy-pages
+
+on:
+  workflow_dispatch:
+    inputs:
+      approval:
+        description: Enter publish-approved-main after the owner reviews publication rights and release CI
+        required: true
+        type: string
+      approved_sha:
+        description: Full 40-character SHA of the reviewed main commit
+        required: true
+        type: string
+
+permissions: {}
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    if: github.repository == 'TYF009/MCM-2025-Problem-E-Meritorious-Winner' && github.ref == 'refs/heads/main' && inputs.approval == 'publish-approved-main' && inputs.approved_sha == github.sha
+    permissions:
+      contents: read
+      pages: read
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: false
+      - run: npm ci --ignore-scripts
+      - run: node --test
+      - run: npm run build
+      - run: npm run verify:dist
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
+
+  deploy:
+    if: github.ref == 'refs/heads/main' && inputs.approved_sha == github.sha && inputs.approval == 'publish-approved-main'
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
